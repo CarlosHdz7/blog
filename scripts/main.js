@@ -1,18 +1,20 @@
 'use strict'
-import Singleton from "./singleton.js";
+import Blog from "./services/Blog.js";
+import './htmlElements.js';
 
-const postContainer = document.getElementById('postContainer');
-const singleton = new Singleton();
+const blog = new Blog();
 
 //[FUNCTIONS]
 const getPost = async () => {
-  const posts = await singleton.getPost();
+
+  const posts = await blog.getPost();
+  const lastestPosts = await blog.getLastPost();
+  const tags = await blog.getTags();
+  
   console.log(posts);
-  for(let post of posts){
-    let p = document.createElement('p');
-    p.appendChild(document.createTextNode(post.title));
-    postContainer.appendChild(p);
-  }
+  console.log(lastestPosts);
+  console.log(tags);
+
 }
 
 //[CALLS]

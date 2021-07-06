@@ -31,6 +31,11 @@ const getTags = async () => {
 
 const getLastestPost = async () => {
   const lastestPosts = await singleton.getLastPost({ limit:3, order:'desc'});
+  const lastPost = lastestPosts[0];
+
+  const normalPost = new HtmlFactory('normalPost', {'title': lastPost.title, 'url': lastPost.image,'description': lastPost.subTitle } );
+  main.appendChild(normalPost);
+  
   for(let post of lastestPosts){
     const smallPost = new HtmlFactory('smallPost', {'title': post.title, 'url': post.image } );
     smallPostContainer.appendChild(smallPost);

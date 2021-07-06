@@ -44,6 +44,41 @@ class SmallPost {
   }
 }
 
+class NormalPost {
+  constructor(props){
+    this.title = props.title;
+    this.description = props.description;
+    this.url = props.url;
+    return this.create();
+  }
+
+  create(){
+    let div1 = document.createElement('div');
+    let div2 = document.createElement('div');
+    let div3 = document.createElement('div');
+    let img = document.createElement('img');
+    let p = document.createElement('p');
+    let small = document.createElement('small');
+
+    p.textContent = this.title;
+    small.textContent = this.description;
+    img.src = this.url;
+
+
+    div1.classList.add('preview-normal-post');
+    div2.classList.add('normal-post__img');
+    div3.classList.add('normal-post__descripcion');
+
+    div2.appendChild(img);
+    div3.appendChild(p);
+    div3.appendChild(small);
+    div1.appendChild(div2);
+    div1.appendChild(div3);
+
+    return div1;
+  }
+}
+
 class Tags {
   constructor(props){
     this.text = props.name;
@@ -65,6 +100,8 @@ class HtmlFactory {
       return new Post(props);
     if(type === "smallPost")
       return new SmallPost(props);
+    if(type === "normalPost")
+      return new NormalPost(props);
     if(type === "tag")
       return new Tags(props);
   }

@@ -44,7 +44,7 @@ class SmallPost {
   }
 }
 
-class NormalPost {
+class BigPost {
   constructor(props){
     this.title = props.title;
     this.description = props.description;
@@ -65,9 +65,9 @@ class NormalPost {
     img.src = this.url;
 
 
-    div1.classList.add('preview-normal-post');
-    div2.classList.add('normal-post__img');
-    div3.classList.add('normal-post__descripcion');
+    div1.classList.add('preview-big-post');
+    div2.classList.add('big-post__img');
+    div3.classList.add('big-post__descripcion');
 
     div2.appendChild(img);
     div3.appendChild(p);
@@ -100,8 +100,8 @@ class HtmlFactory {
       return new Post(props);
     if(type === "smallPost")
       return new SmallPost(props);
-    if(type === "normalPost")
-      return new NormalPost(props);
+    if(type === "bigPost")
+      return new BigPost(props);
     if(type === "tag")
       return new Tags(props);
   }

@@ -50,7 +50,7 @@ aside{
 
 section{
   width: 100%;
-  height: 300px;
+  height: auto;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: auto;
@@ -116,7 +116,7 @@ footer{
   cursor: pointer;
 }
 
-.preview-normal-post{
+.preview-big-post{
   width: 100%;
   height: auto;
   border-radius:var(--radius);
@@ -138,20 +138,20 @@ footer{
   /* border: 1px solid gray; */
 }
 
-.normal-post__img{
+.big-post__img{
   height: 350px;
 }
 
-.normal-post__img img{
+.big-post__img img{
   width: 100%;
   height: 100%;
 }
 
-.normal-post__descripcion{
+.big-post__descripcion{
   padding: 10px;
 }
 
-.normal-post__descripcion p{
+.big-post__descripcion p{
   margin: 10px 0px;
   font-weight: 700;
 }

@@ -5,16 +5,18 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel='shortcut icon' href='/images/favicon.ico'>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet"> 
   <link rel="stylesheet" href="styles/styles.css">
   <title>Blog</title>
 </head>
 <body>
 
-  <div class="container">
-    <nav>
-      <div class="nav-logo">
-        Logo
-      </div>
+  <nav>
+    <div class="nav-logo">
+      Logo
+    </div>
       <ul class="nav-options">
         <li class="nav-options__item">
           <a class="item__button" href="#">Home</a>
@@ -26,26 +28,39 @@
           <a class="item__button" href="#">Login</a>
         </li>
       </ul>
-    </nav>
+  </nav>
+  <div class="container">
     <header>
-      <h1 class="text-center">Patter Designs</h1>
+      <h1 class="text-center">Pattern Designs</h1>
     </header>
     <div class="inner-container">
       <main>
-        <h4>Menu of tags</h4>
-        <h4>List of post</h4>
-        <div class="posts-container" id=postContainer>
-          
+        <div class="preview-normal-post">
+
         </div>
       </main>
       <aside>
-        Last 3 post
+        <h4 class="title">Lastest post</h4>
+        <div class="preview-small-post">
+
+        </div>
+        <div class="preview-small-post">
+
+        </div>
+        <div class="preview-small-post">
+
+        </div>
       </aside>
     </div>
-    <footer>
-      <h4 class="text-center">Carlos Hdz -Blog</h4>
-    </footer>
+    <section>
+      <div class="preview-normal-post"></div>
+      <div class="preview-normal-post"></div>
+      <div class="preview-normal-post"></div>
+    </section>
   </div>
+  <footer>
+    <h4 class="text-center">Carlos Hdz -Blog</h4>
+  </footer>
 
   <script type="module" src="scripts/index/main.js"></script>
 </body>

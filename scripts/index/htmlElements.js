@@ -1,1 +1,1 @@
-const postContainer = document.getElementById('postContainer');
+// const postContainer = document.getElementById('postContainer');

@@ -1,16 +1,27 @@
 @import url("utilities.css");
 
+:root{
+  --background:#F4F6F6;
+  --white:#fff;
+  --radius:3px;
+  --shadow:rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
 *{
-  border:1px solid red;
+  /* border:1px solid red; */
 }
 
 .container{
   width: 100%;
+  max-width: 900px;
+  margin: auto;
 }
 
 body{
   padding:0px;
   margin: 0px;
+  background: var(--background);
+  font-family: 'Montserrat', sans-serif;
 }
 
 nav{
@@ -18,6 +29,8 @@ nav{
   height: auto;
   display: flex;
   justify-content: space-between;
+  background-color:var(--white);
+  box-shadow: var(--shadow);
 }
 
 header{
@@ -26,12 +39,37 @@ header{
 }
 
 main{
-  height: 500px;
+  padding: 10px 0px;
+  height: auto;
+}
+
+aside{
+  padding: 10px;
+}
+
+section{
+  width: 100%;
+  height: 300px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto;
+  grid-gap: 20px;
 }
 
 footer{
   width: 100%;
   height: auto;
+}
+
+.title{
+  margin-top: 0px;
+}
+
+.nav-logo{
+  padding:3px 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .nav-options{
@@ -45,7 +83,7 @@ footer{
 
 .item__button{
   text-decoration: none;
-  padding: 8px;
+  padding: 20px;
   margin: 0px;
   display: inline-block;
 }
@@ -54,4 +92,23 @@ footer{
   display: grid;
   grid-template-columns: 5fr 2fr;
   grid-template-rows: auto;
+  grid-gap:10px;
+  margin-bottom: 20px;
+}
+
+.preview-small-post{
+  width: 100%;
+  height: 50px;
+  margin-bottom: 10px;
+  border-radius:var(--radius);
+  background-color: var(--white);
+  box-shadow: var(--shadow);
+}
+
+.preview-normal-post{
+  width: 100%;
+  height: 300px;
+  border-radius:var(--radius);
+  background-color: var(--white);
+  box-shadow: var(--shadow);
 }

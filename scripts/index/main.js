@@ -31,11 +31,14 @@ const getTags = async () => {
 
 const getLastestPost = async () => {
   const lastestPosts = await singleton.getLastPost({ limit:3, order:'desc'});
-  console.log(lastestPosts);
+  for(let post of lastestPosts){
+    const smallPost = new HtmlFactory('smallPost', {'title': post.title, 'url': post.image } );
+    smallPostContainer.appendChild(smallPost);
+  }
 }
 
 //[CALLS]
-getPost();
-getPostById(1);
-getTags();
+// getPost();
+// getPostById(1);
+// getTags();
 getLastestPost();

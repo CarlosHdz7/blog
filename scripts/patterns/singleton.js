@@ -2,7 +2,7 @@ let instance = null;
 
 /*SINGLETON*/
 
-class Blog {
+class Singleton {
   
   constructor(){
     if (!instance) {
@@ -22,9 +22,15 @@ class Blog {
     return data;
   }
 
+  async getPostById(id) {
+    const response = await fetch(`${this.url}/posts/${id}`);
+    const data = await response.json();
+    return data;
+  }
+
   //Nota: hacerlo configurable
-  async getLastPost(limit = '', order = '') {
-    const response = await fetch(`${this.url}/posts?_limit=3&_sort=createDate&_order=desc`);
+  async getLastPost({ limit = 3, order = 'asc' } = {}) {
+    const response = await fetch(`${this.url}/posts?_limit=${limit}&_order=${order}&_sort=createDate`);
     const data = await response.json();
     return data;
   }
@@ -36,4 +42,4 @@ class Blog {
   }
 }
 
-export default Blog;
+export default Singleton;

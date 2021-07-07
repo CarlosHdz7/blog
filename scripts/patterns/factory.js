@@ -44,18 +44,18 @@ class Post {
     let div2 = document.createElement('div');
     let div3 = document.createElement('div');
     let img = document.createElement('img');
-    let p = document.createElement('p');
+    let p = document.createElement('a');
     let small = document.createElement('small');
     let small2 = document.createElement('small');
 
     p.textContent = this.title;
+    p.href = 'post.html';
     small.textContent = this.description;
     small2.textContent = this.date;
     img.src = this.url;
 
     small.classList.add('preview-post__subtitle');
     small2.classList.add('preview-post__date');
-    // div1.classList.add('preview-post');
     div2.classList.add('preview-post__img');
     div3.classList.add('preview-post__descripcion');
     (this.size === 'square')

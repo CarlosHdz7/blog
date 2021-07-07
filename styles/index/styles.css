@@ -1,13 +1,4 @@
-@import url("utilities.css");
-
-:root{
-  --background:#F4F6F6;
-  --white:#fff;
-  --black1: #2B2B2B;
-  --gray:#bdc3c7;
-  --radius:3px;
-  --shadow:rgba(0, 0, 0, 0.16) 0px 1px 4px;
-}
+@import url("../utilities.css");
 
 *{
   /* border:1px solid red; */

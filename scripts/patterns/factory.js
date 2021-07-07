@@ -1,18 +1,3 @@
-class Post {
-  constructor(props){
-    this.text = props.name;
-    return this.create();
-  }
-
-  create(){
-    let p = document.createElement('p');
-    let text = document.createTextNode(this.text);
-    p.appendChild(text);
-
-    return p;
-  }
-}
-
 class SmallPost {
   constructor(props){
     this.title = props.title;
@@ -44,11 +29,12 @@ class SmallPost {
   }
 }
 
-class BigPost {
+class Post {
   constructor(props){
     this.title = props.title;
     this.description = props.description;
     this.url = props.url;
+    this.size = (props.size) ? props.size : 'square';
     return this.create();
   }
 
@@ -65,9 +51,12 @@ class BigPost {
     img.src = this.url;
 
 
-    div1.classList.add('preview-big-post');
-    div2.classList.add('big-post__img');
-    div3.classList.add('big-post__descripcion');
+    div1.classList.add('preview-post');
+    div2.classList.add('preview-post__img');
+    div3.classList.add('preview-post__descripcion');
+    (this.size == 'square')
+      ? div2.classList.add('.img-square')
+      : div2.classList.add('.img-rectangle');
 
     div2.appendChild(img);
     div3.appendChild(p);
@@ -100,8 +89,6 @@ class HtmlFactory {
       return new Post(props);
     if(type === "smallPost")
       return new SmallPost(props);
-    if(type === "bigPost")
-      return new BigPost(props);
     if(type === "tag")
       return new Tags(props);
   }

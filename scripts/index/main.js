@@ -2,6 +2,8 @@
 
 import Singleton from '../patterns/singleton.js';
 import HtmlFactory from '../patterns/factory.js';
+import { loadNavbar, loadFooter } from '../shared.js';
+
 import './htmlElements.js';
 
 const singleton = new Singleton();
@@ -47,7 +49,18 @@ const getLastestPost = async () => {
   }
 }
 
+const loadHtml = async () => {
+  const navbar = await loadNavbar();
+  const footer = await loadFooter();
+
+  navbarContainer.innerHTML = navbar;
+  footerContainer.innerHTML = footer;
+};
+
+
 //[CALLS]
+loadHtml();
+
 getPost();
 // getPostById(1);
 // getTags();

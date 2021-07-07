@@ -53,10 +53,12 @@ section{
   width: 100%;
   height: auto;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  /* grid-template-columns: 1fr 1fr 1fr; */
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   grid-template-rows: auto;
   grid-gap: 20px;
   margin-bottom: 40px;
+  justify-items: center;
 }
 
 footer{
@@ -105,7 +107,7 @@ footer{
 }
 
 .preview-post{
-  width: 100%;
+  width: 320px;
   height: auto;
   border-radius:var(--radius);
   background-color: var(--white);
@@ -115,7 +117,7 @@ footer{
 
 
 .img-square{
-  height: 100px;
+  height: 180px;
 }
 
 .img-rectangle{
@@ -138,6 +140,13 @@ footer{
 
 .preview-post__subtitle,.preview-post__date{
   display: block;
+}
+
+.preview-post__subtitle{
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  margin-bottom: 5px;
 }
 
 .preview-post__date{

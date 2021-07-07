@@ -1,9 +1,10 @@
 'use strict'
 
 import { loadNavbar, loadFooter } from '../sharedScripts.js';
-
 import '../sharedHtmlElements.js';
 
+
+//[FUNCTIONS]
 const loadHtml = async () => {
   const navbar = await loadNavbar();
   const footer = await loadFooter();
@@ -12,4 +13,5 @@ const loadHtml = async () => {
   footerContainer.innerHTML = footer;
 };
 
+//[TRIGGERS]
 loadHtml();

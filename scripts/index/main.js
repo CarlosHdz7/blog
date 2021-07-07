@@ -3,7 +3,6 @@
 import Singleton from '../patterns/singleton.js';
 import HtmlFactory from '../patterns/factory.js';
 import { loadNavbar, loadFooter } from '../sharedScripts.js';
-
 import '../sharedHtmlElements.js';
 import './htmlElements.js';
 
@@ -59,7 +58,7 @@ const loadHtml = async () => {
 };
 
 
-//[CALLS]
+//[TRIGGERS]
 loadHtml();
 
 getPost();

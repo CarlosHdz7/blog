@@ -4,6 +4,7 @@
   --background:#F4F6F6;
   --white:#fff;
   --black1: #2B2B2B;
+  --gray:#bdc3c7;
   --radius:3px;
   --shadow:rgba(0, 0, 0, 0.16) 0px 1px 4px;
 }
@@ -127,11 +128,21 @@ footer{
 }
 
 .preview-post__descripcion{
-  padding: 10px;
+  padding: 20px;
 }
 
 .preview-post__descripcion p{
   margin: 10px 0px;
+  font-weight: 700;
+}
+
+.preview-post__subtitle,.preview-post__date{
+  display: block;
+}
+
+.preview-post__date{
+  text-align: right;
+  color:var(--gray);
   font-weight: 700;
 }
 

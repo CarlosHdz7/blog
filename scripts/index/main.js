@@ -12,7 +12,7 @@ const getPost = async () => {
   const posts = await singleton.getPost();
 
   for (let i = 3; i < posts.length; i++) {
-    const post = new HtmlFactory('post', {'title': posts[i].title, 'url': posts[i].image, 'description': posts[i].subTitle } );
+    const post = new HtmlFactory('post', {'title': posts[i].title, 'url': posts[i].image, 'description': posts[i].subTitle, 'date': posts[i].createDate } );
     normalPostcontainer.appendChild(post);
   }
   console.log(posts);
@@ -38,7 +38,7 @@ const getLastestPost = async () => {
   const lastestPosts = await singleton.getLastPost({ limit:3, order:'desc'});
   const lastPost = lastestPosts[0];
 
-  const post = new HtmlFactory('post', {'title': lastPost.title, 'url': lastPost.image,'description': lastPost.subTitle, 'size':'rectangle' } );
+  const post = new HtmlFactory('post', {'title': lastPost.title, 'url': lastPost.image,'description': lastPost.subTitle, 'size':'rectangle', 'date': lastPost.createDate } );
   main.appendChild(post);
   
   for(let post of lastestPosts){

@@ -2,8 +2,9 @@
 
 import Singleton from '../patterns/singleton.js';
 import HtmlFactory from '../patterns/factory.js';
-import { loadNavbar, loadFooter } from '../shared.js';
+import { loadNavbar, loadFooter } from '../sharedScripts.js';
 
+import '../sharedHtmlElements.js';
 import './htmlElements.js';
 
 const singleton = new Singleton();

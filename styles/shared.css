@@ -62,3 +62,13 @@ footer{
   background-color: var(--black1);
   color: var(--white);
 }
+
+.btn{
+  border: none;
+  border-radius: var(--radius);
+  padding: 8px 15px;
+}
+
+.btn:hover{
+  cursor:pointer;
+}

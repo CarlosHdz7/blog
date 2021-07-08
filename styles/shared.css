@@ -13,7 +13,6 @@
   margin: auto;
 }
 
-
 body{
   padding:0px;
   margin: 0px;
@@ -28,6 +27,8 @@ nav{
   justify-content: space-between;
   background-color:var(--white);
   box-shadow: var(--shadow);
+  padding: 0px 30px;
+  box-sizing: border-box;
 }
 
 .nav-logo{

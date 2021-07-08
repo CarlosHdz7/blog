@@ -6,3 +6,5 @@ const textAuthor = document.getElementById('textCreator');
 const textDate = document.getElementById('textDate');
 const commentsContainer = document.getElementById('commentsContainer');
 const textLikes = document.getElementById('textLikes');
+const txtComment = document.getElementById('txtComment');
+const btnComment = document.getElementById('btnComment');

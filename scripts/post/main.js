@@ -61,11 +61,12 @@ const loadComments = async (id) => {
 
 const postComment = async () => {
   try{
-
     const comment = txtComment.value;
-    await singleton.postData(`${ BASEURL }/comments`, { "comment": comment, "postId": idPost });
-    loadComments(idPost);
-    txtComment.value = "";
+    if(comment){
+      await singleton.postData(`${ BASEURL }/comments`, { "comment": comment, "postId": idPost });
+      loadComments(idPost);
+      txtComment.value = "";
+    }
 
   }catch(error){
     console.log(error.message);

@@ -1,2 +1,15 @@
 @import url("../utilities.css");
 @import url("../shared.css");
+
+.posts-container{
+  background-color: var(--white);
+  padding: 30px;
+  border-radius:var(--radius);
+  margin:20px 0px;
+  box-shadow: var(--shadow);
+}
+
+.title{
+  margin: 0px;
+  margin-bottom: 10px;
+}

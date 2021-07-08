@@ -1,0 +1,1 @@
+const blogsTableBody = document.createElement('blogsTableBody');

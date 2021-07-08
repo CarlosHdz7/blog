@@ -3,6 +3,7 @@
 import Helpers  from '../helpers.js';
 import HtmlFactory from '../patterns/factory.js';
 import { loadNavbar, loadFooter } from '../sharedScripts.js';
+import './htmlElements.js';
 import '../sharedHtmlElements.js';
 
 const helpers = new Helpers();

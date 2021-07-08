@@ -63,6 +63,21 @@ class Singleton {
     return data;
   }
 
+
+  //Reusable functions
+  async getData(endpoint = '', message = 'A error has ocurred') {
+
+    const response = await fetch(`${this.url}${endpoint}`);
+    
+    if(!response.ok){
+      throw new Error(message);
+    }
+    
+    const data = await response.json();
+    return data;
+    
+  }
+
   async postData(url = '', data = {}, message = 'A error has ocurred') {
 
     const response = await fetch(url, {
@@ -108,6 +123,7 @@ class Singleton {
     return response.json();
     
   }
+
 }
 
 export default Singleton;

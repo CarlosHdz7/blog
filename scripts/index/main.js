@@ -1,17 +1,17 @@
 'use strict'
 
-import Singleton from '../patterns/singleton.js';
+import Helpers  from '../helpers.js';
 import HtmlFactory from '../patterns/factory.js';
 import { loadNavbar, loadFooter } from '../sharedScripts.js';
 import '../sharedHtmlElements.js';
 import './htmlElements.js';
 
-const singleton = new Singleton();
-
+const helpers = new Helpers();
 
 //[FUNCTIONS]
 const getPost = async () => {
-  const posts = await singleton.getPost();
+
+  const posts = await helpers.getPosts();
 
   for (let i = 3; i < posts.length; i++) {
     const post = new HtmlFactory('post', {
@@ -24,20 +24,19 @@ const getPost = async () => {
 
     normalPostcontainer.appendChild(post);
   }
-  console.log(posts);
+
 }
 
 const getTags = async () => {
-  const tags = await singleton.getTags();
+  const tags = await helpers.getTags();
   for(let tag of tags){
     const tagHtml = new HtmlFactory('tag', {'name': tag.name } );
-    console.log(tagHtml);
   }
   console.log(tags);
 }
 
-const getLastestPost = async () => {
-  const lastestPosts = await singleton.getLastPost({ limit:3, order:'desc'});
+const getLastestPost = async () => {  
+  const lastestPosts = await helpers.getPosts({limit:3});
   const lastPost = lastestPosts[0];
 
   const post = new HtmlFactory('post', {
@@ -52,7 +51,11 @@ const getLastestPost = async () => {
   main.appendChild(post);
   
   for(let post of lastestPosts){
-    const smallPost = new HtmlFactory('smallPost', {'title': post.title, 'url': post.image, 'id': post.id } );
+    const smallPost = new HtmlFactory('smallPost', {
+      'title': post.title, 
+      'url': post.image, 
+      'id': post.id 
+    });
     smallPostContainer.appendChild(smallPost);
   }
 }
@@ -65,11 +68,8 @@ const loadHtml = async () => {
   footerContainer.innerHTML = footer;
 };
 
-
 //[TRIGGERS]
 loadHtml();
-
 getPost();
-// getPostById(1);
-// getTags();
+getTags();
 getLastestPost();

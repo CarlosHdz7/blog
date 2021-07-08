@@ -122,6 +122,7 @@ class Comment{
 }
 class Tr{
   constructor(props){
+    this.id = props.id;
     this.title = props.title;
     this.author = props.author;
     this.date = props.date;
@@ -130,20 +131,27 @@ class Tr{
 
   create(){
     let tr = document.createElement('tr');
+    let tdId = document.createElement('td');
     let tdTitle = document.createElement('td');
     let tdAuthor = document.createElement('td');
     let tdDate = document.createElement('td');
-    let txtTitle = document.createTextNode('td');
-    let txtAuthor = document.createTextNode('td');
-    let txtDate = document.createTextNode('td');
+    let tdOptions = document.createElement('td');
 
+    let txtId = document.createTextNode(this.id);
+    let txtTitle = document.createTextNode(this.title);
+    let txtAuthor = document.createTextNode(this.author);
+    let txtDate = document.createTextNode(this.date);
+
+    tdId.appendChild(txtId);
     tdTitle.appendChild(txtTitle);
     tdAuthor.appendChild(txtAuthor);
     tdDate.appendChild(txtDate);
 
+    tr.appendChild(tdId);
     tr.appendChild(tdTitle);
     tr.appendChild(tdAuthor);
     tr.appendChild(tdDate);
+    tr.appendChild(tdOptions);
 
     return tr;
   }

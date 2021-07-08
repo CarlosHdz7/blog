@@ -4,9 +4,13 @@ const singleton = new Singleton();
 
 class Helpers{
 
-  async getPosts ({order = 'desc', sort = 'createDate', limit = 0} = {}){
-    let url = `/posts?&_order=${order}&_sort=${sort}`;
+  async getPosts ({order, sort, limit, id} = {}){
+    let url = `/posts?`;
+    
+    if(order) url += `&_order=${order}`;
+    if(sort) url += `&_sort=${sort}`;
     if(limit) url += `&_limit=${limit}`;
+    if(id) url = `/posts/${id}`;
   
     const data = await singleton.getData(url);
     return data;

@@ -11,7 +11,7 @@ const helpers = new Helpers();
 //[FUNCTIONS]
 const getPost = async () => {
 
-  const posts = await helpers.getPosts();
+  const posts = await helpers.getPosts({order:'desc', sort:'createDate'});
 
   for (let i = 3; i < posts.length; i++) {
     const post = new HtmlFactory('post', {
@@ -36,7 +36,7 @@ const getTags = async () => {
 }
 
 const getLastestPost = async () => {  
-  const lastestPosts = await helpers.getPosts({limit:3});
+  const lastestPosts = await helpers.getPosts({order:'desc', sort:'createDate', limit:3});
   const lastPost = lastestPosts[0];
 
   const post = new HtmlFactory('post', {

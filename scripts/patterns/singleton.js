@@ -40,6 +40,24 @@ class Singleton {
     const data = await response.json();
     return data;
   }
+
+  async getAuthorById(id) {
+    const response = await fetch(`${this.url}/authors/${id}`);
+    const data = await response.json();
+    return data;
+  }
+
+  async getCommentsByPostId(id) {
+    const response = await fetch(`${this.url}/posts/${id}/comments`);
+    const data = await response.json();
+    return data;
+  }
+
+  async getUsers() {
+    const response = await fetch(`${this.url}/users`);
+    const data = await response.json();
+    return data;
+  }
 }
 
 export default Singleton;

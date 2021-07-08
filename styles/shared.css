@@ -7,6 +7,13 @@
   --shadow:rgba(0, 0, 0, 0.16) 0px 1px 4px;
 }
 
+.container{
+  width: 100%;
+  max-width: 1000px;
+  margin: auto;
+}
+
+
 body{
   padding:0px;
   margin: 0px;

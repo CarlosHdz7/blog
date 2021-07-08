@@ -27,13 +27,6 @@ const getPost = async () => {
   console.log(posts);
 }
 
-const getPostById = async (id) => {
-  const post = await singleton.getPostById(id);
-  const postHtml = new HtmlFactory('post', {'name': post.title } );
-  console.log(post);
-  console.log(postHtml);
-}
-
 const getTags = async () => {
   const tags = await singleton.getTags();
   for(let tag of tags){

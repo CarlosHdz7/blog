@@ -13,9 +13,33 @@
 </head>
 <body>
     <div id="navbarContainer"></div>
-      <h1>Details</h1>
-    <div id="footerContainer"></div>
+    
+    <div class="container">
+      <div class="post-container">
+        <div>
+          <img src="" alt="" id="imgPost" class="w-100">
+        </div>
+        <h1 id="textTitle"></h1>
+        <h4 id="textSubTitle"></h4>
+        <p><span id="textAuthor"></span> <span id="textDate"></span></p>
+        <p id="textDescription"></p>
+        <p><span>Likes:</span> <span id="textLikes" class="bold"></span></p>
+      </div>
 
+      <div class="comments-container">
+        <textarea name="" id="" cols="30" rows="4" class="w-100"></textarea>
+        <div class="w-100 d-flex justify-content-end">
+          <button type="button">Comment</button>
+        </div>
+        <p class="bold">Comments:</p>
+        <div id="commentsContainer">
+
+        </div>
+      </div>
+
+    </div>
+    
+    <div id="footerContainer"></div>
 
     <script type="module" src="scripts/post/main.js"></script>
 </body>

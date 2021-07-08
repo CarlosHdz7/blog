@@ -28,7 +28,6 @@ class SmallPost {
     return div1;
   }
 }
-
 class Post {
   constructor(props){
     this.title = props.title;
@@ -78,7 +77,6 @@ class Post {
     return div1;
   }
 }
-
 class Tags {
   constructor(props){
     this.text = props.name;
@@ -93,7 +91,6 @@ class Tags {
     return span;
   }
 }
-
 class HtmlFactory {
   constructor(type, props) {
     if(type === "post")

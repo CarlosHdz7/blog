@@ -93,6 +93,33 @@ class Tags {
     return span;
   }
 }
+class Comment{
+  constructor(props){
+    this.comment = props.comment;
+    return this.create();
+  }
+
+  create(){
+    let div = document.createElement('div');
+    let p = document.createElement('p');
+    let span1 = document.createElement('span');
+    let span2 = document.createElement('span2');
+    let text1 = document.createTextNode('Anonymous');
+    let text2 = document.createTextNode(this.comment);
+
+
+    div.classList.add('comment');
+    span1.classList.add('comment__user');
+    span2.classList.add('comment__text');
+    span1.appendChild(text1);
+    span2.appendChild(text2);
+    p.appendChild(span1);
+    p.appendChild(span2);
+    div.appendChild(p);
+
+    return div;
+  }
+}
 class HtmlFactory {
   constructor(type, props) {
     if(type === "post")
@@ -101,6 +128,8 @@ class HtmlFactory {
       return new SmallPost(props);
     if(type === "tag")
       return new Tags(props);
+    if(type === "comment")
+      return new Comment(props);
   }
 };
 

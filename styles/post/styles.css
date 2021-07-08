@@ -44,3 +44,19 @@
 .like:hover{
   cursor: pointer;
 }
+
+.comment{
+  border:1px solid gray;
+  padding: 2px 20px;
+  border-radius:var(--radius);
+  margin-bottom: 10px;
+}
+
+.comment__user,.comment__text{
+  font-size: 12px;
+}
+
+.comment__user{
+  font-weight: 700;
+  margin-right: 4px;
+}

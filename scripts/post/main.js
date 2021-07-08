@@ -1,6 +1,7 @@
 'use strict'
 
 import Helpers  from '../helpers.js';
+import HtmlFactory from '../patterns/factory.js';
 import { loadNavbar, loadFooter } from '../sharedScripts.js';
 import '../sharedHtmlElements.js';
 import './htmlElements.js';
@@ -58,9 +59,8 @@ const loadComments = async () => {
   while(commentsContainer.firstChild) commentsContainer.removeChild(commentsContainer.firstChild);
 
   for(let comment of comments){
-    const p = document.createElement('p');
-    p.textContent = comment.comment; 
-    commentsContainer.appendChild(p);
+    const commentHtml = new HtmlFactory('comment', {'comment': comment.comment } );
+    commentsContainer.appendChild(commentHtml);
   }
 
 };

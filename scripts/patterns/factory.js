@@ -126,6 +126,7 @@ class Tr{
     this.title = props.title;
     this.author = props.author;
     this.date = props.date;
+    this.events = props.events;
     return this.create();
   }
 
@@ -137,6 +138,17 @@ class Tr{
     let tdDate = document.createElement('td');
     let tdOptions = document.createElement('td');
 
+    let btnEdit = document.createElement('button');
+    let btnDelete = document.createElement('button');
+    btnEdit.textContent = 'Edit';
+    btnDelete.textContent = 'Delete';
+
+    if(this.events.hasOwnProperty('delete')){
+      btnDelete.addEventListener('click', () => {
+        this.events.delete(this.id);
+      })
+    }
+
     let txtId = document.createTextNode(this.id);
     let txtTitle = document.createTextNode(this.title);
     let txtAuthor = document.createTextNode(this.author);
@@ -146,7 +158,9 @@ class Tr{
     tdTitle.appendChild(txtTitle);
     tdAuthor.appendChild(txtAuthor);
     tdDate.appendChild(txtDate);
-
+    tdOptions.appendChild(btnEdit);
+    tdOptions.appendChild(btnDelete);
+    
     tr.appendChild(tdId);
     tr.appendChild(tdTitle);
     tr.appendChild(tdAuthor);

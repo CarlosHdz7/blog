@@ -49,7 +49,11 @@ class Helpers{
     await singleton.patchData(url, { "likes": likes });
   }
 
+  async deletePost (id){
+    let url = `/posts/${id}`;
+    const data = await singleton.deleteData(url);
+    return data;
+  }
 }
-
 
 export default Helpers;

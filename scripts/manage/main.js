@@ -9,17 +9,31 @@ import '../sharedHtmlElements.js';
 const helpers = new Helpers();
 
 //[FUNCTIONS]
-const getPost = async () => {
+const deletePost = async (id) => {
+  try {
+    await helpers.deletePost(id);
+    loadPost();
+  } catch (error) {
+    console.log(error.message);
+  }
+}
+
+const loadPost = async () => {
 
   const posts = await helpers.getPosts({order:'desc', sort:'createDate'});
   console.log(posts);
+
+  while(blogsTableBody.firstChild) blogsTableBody.removeChild(blogsTableBody.firstChild);
 
   for (let post of posts) {
     const trHtml = new HtmlFactory('tr', {
       'id': post.id,
       'title': post.title,
       'date': post.createDate,
-      'author':  post.author
+      'author':  post.author,
+      'events':{
+        'delete': deletePost
+      }
     });
 
     blogsTableBody.appendChild(trHtml);
@@ -34,7 +48,6 @@ const loadHtml = async () => {
   navbarContainer.innerHTML = navbar;
   footerContainer.innerHTML = footer;
 };
-
 //[TRIGGERS]
 loadHtml();
-getPost();
+loadPost();

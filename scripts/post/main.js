@@ -13,5 +13,13 @@ const loadHtml = async () => {
   footerContainer.innerHTML = footer;
 };
 
+const getQueryParams = () => {
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+  const code = urlParams.get('id');
+  console.log(code);
+};
+
 //[TRIGGERS]
+getQueryParams();
 loadHtml();

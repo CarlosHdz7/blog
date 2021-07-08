@@ -36,6 +36,7 @@ class Post {
     this.date = props.date;
     this.url = props.url;
     this.size = (props.size) ? props.size : 'square';
+    this.id = props.id;
     return this.create();
   }
 
@@ -44,12 +45,12 @@ class Post {
     let div2 = document.createElement('div');
     let div3 = document.createElement('div');
     let img = document.createElement('img');
-    let p = document.createElement('a');
+    let a = document.createElement('a');
     let small = document.createElement('small');
     let small2 = document.createElement('small');
 
-    p.textContent = this.title;
-    p.href = 'post.html';
+    a.textContent = this.title;
+    a.href = `post.html?id=${this.id}`;
     small.textContent = this.description;
     small2.textContent = this.date;
     img.src = this.url;
@@ -67,7 +68,7 @@ class Post {
       : div1.classList.add('preview-post','w-100')
 
     div2.appendChild(img);
-    div3.appendChild(p);
+    div3.appendChild(a);
     div3.appendChild(small);
     div3.appendChild(small2);
     div1.appendChild(div2);

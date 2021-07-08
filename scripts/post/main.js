@@ -25,14 +25,19 @@ const getQueryParams = async () => {
 };
 
 const loadPost = async () => {
-  const urlParams = await getQueryParams();
-  idPost = urlParams.get('id');
+  try{
+    const urlParams = await getQueryParams();
+    idPost = urlParams.get('id');
+  
+    const obj = await singleton.getPostById(idPost);
+    const author = await singleton.getAuthorById(obj.author);
+    
+    displayPostInformation(obj, author);
+    loadComments(idPost);
 
-  const obj = await singleton.getPostById(idPost);
-  const author = await singleton.getAuthorById(obj.author);
-
-  displayPostInformation(obj, author);
-  loadComments(idPost);
+  }catch(error){
+    window.location.href = './404.html';
+  }
 };
 
 const displayPostInformation = (obj, author) => {

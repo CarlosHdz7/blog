@@ -24,6 +24,10 @@ class Singleton {
 
   async getPostById(id) {
     const response = await fetch(`${this.url}/posts/${id}`);
+
+    if(response.status === 404){
+      throw new Error('Http not found');
+    }
     const data = await response.json();
     return data;
   }

@@ -32,3 +32,15 @@
 .mt-3{
   margin-top: 15px;
 }
+
+.not-found{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.not-found__message{
+  font-size: 80px;
+}

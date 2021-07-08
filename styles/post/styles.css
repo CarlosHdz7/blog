@@ -24,3 +24,23 @@
 .text-comment{
   box-sizing: border-box;
 }
+
+.like-container{
+  width: 100%;
+  display: flex;
+  justify-content: end;
+}
+
+.like{
+  width: 20px;
+  height: 20px;
+  background-image: url('../../images/heart.png');
+  background-position: center; 
+  background-repeat: no-repeat; 
+  background-size: cover;
+  background-origin: content-box;
+}
+
+.like:hover{
+  cursor: pointer;
+}

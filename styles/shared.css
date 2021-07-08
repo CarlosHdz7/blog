@@ -72,3 +72,20 @@ footer{
 .btn:hover{
   cursor:pointer;
 }
+
+.icon-arrow-container{
+  width:24px;
+  height: 24px;
+  display: block;
+  margin: 0px;
+}
+
+.icon-arrow-container:hover{
+  cursor:pointer;
+}
+
+.icon-arrow{
+  margin: 0px;
+  width: 100%;
+  height: auto;
+}

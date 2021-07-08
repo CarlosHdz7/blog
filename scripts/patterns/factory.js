@@ -120,6 +120,34 @@ class Comment{
     return div;
   }
 }
+class Tr{
+  constructor(props){
+    this.title = props.title;
+    this.author = props.author;
+    this.date = props.date;
+    return this.create();
+  }
+
+  create(){
+    let tr = document.createElement('tr');
+    let tdTitle = document.createElement('td');
+    let tdAuthor = document.createElement('td');
+    let tdDate = document.createElement('td');
+    let txtTitle = document.createTextNode('td');
+    let txtAuthor = document.createTextNode('td');
+    let txtDate = document.createTextNode('td');
+
+    tdTitle.appendChild(txtTitle);
+    tdAuthor.appendChild(txtAuthor);
+    tdDate.appendChild(txtDate);
+
+    tr.appendChild(tdTitle);
+    tr.appendChild(tdAuthor);
+    tr.appendChild(tdDate);
+
+    return tr;
+  }
+}
 class HtmlFactory {
   constructor(type, props) {
     if(type === "post")
@@ -130,6 +158,8 @@ class HtmlFactory {
       return new Tags(props);
     if(type === "comment")
       return new Comment(props);
+    if(type === "tr")
+      return new Tr(props);
   }
 };
 

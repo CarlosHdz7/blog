@@ -16,8 +16,8 @@ class Singleton {
 
 
   //Nota: Agregar paginacion
-  async getPost() {
-    const response = await fetch(`${this.url}/posts`);
+  async getPost(order = 'desc') {
+    const response = await fetch(`${this.url}/posts?&_order=${order}&_sort=createDate`);
     const data = await response.json();
     return data;
   }

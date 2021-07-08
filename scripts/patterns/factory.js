@@ -2,6 +2,7 @@ class SmallPost {
   constructor(props){
     this.title = props.title;
     this.url = props.url;
+    this.id = props.id;
     return this.create();
   }
 
@@ -10,9 +11,10 @@ class SmallPost {
     let div2 = document.createElement('div');
     let div3 = document.createElement('div');
     let img = document.createElement('img');
-    let span = document.createElement('span');
+    let a = document.createElement('a');
 
-    span.textContent = this.title;
+    a.textContent = this.title;
+    a.href = `post.html?id=${this.id}`;
     img.src = this.url;
 
 
@@ -21,7 +23,7 @@ class SmallPost {
     div3.classList.add('small-post__title');
 
     div2.appendChild(img);
-    div3.appendChild(span);
+    div3.appendChild(a);
     div1.appendChild(div2);
     div1.appendChild(div3);
 

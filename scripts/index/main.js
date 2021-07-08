@@ -52,7 +52,7 @@ const getLastestPost = async () => {
   main.appendChild(post);
   
   for(let post of lastestPosts){
-    const smallPost = new HtmlFactory('smallPost', {'title': post.title, 'url': post.image } );
+    const smallPost = new HtmlFactory('smallPost', {'title': post.title, 'url': post.image, 'id': post.id } );
     smallPostContainer.appendChild(smallPost);
   }
 }

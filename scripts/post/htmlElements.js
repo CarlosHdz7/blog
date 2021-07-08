@@ -8,3 +8,4 @@ const commentsContainer = document.getElementById('commentsContainer');
 const textLikes = document.getElementById('textLikes');
 const txtComment = document.getElementById('txtComment');
 const btnComment = document.getElementById('btnComment');
+const btnLike = document.getElementById('btnLike');

@@ -73,8 +73,30 @@ const postComment = async () => {
   }
 }
 
+const setLike = async () => {
+  try{
+    const obj = await singleton.getPostById(idPost);
+    const likes = obj.likes + 1;
+    await singleton.patchData(`${ BASEURL }/posts/${idPost}`, { "likes": likes });
+    updateLikes();
+  }catch(error){
+    console.log(error.message);
+  }
+}
+
+const updateLikes = async () => {
+  try{
+    const obj = await singleton.getPostById(idPost);
+    textLikes.textContent = obj.likes;
+  }catch(error){
+    console.log(error.message);
+  }
+}
+
+
 //[LISTENERS]
 btnComment.addEventListener('click', postComment);
+btnLike.addEventListener('click', setLike);
 
 //[TRIGGERS]
 loadHtml();

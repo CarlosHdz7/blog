@@ -30,7 +30,6 @@ section{
   width: 100%;
   height: auto;
   display: grid;
-  /* grid-template-columns: 1fr 1fr 1fr; */
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   grid-template-rows: auto;
   grid-gap: 20px;
@@ -75,7 +74,7 @@ section{
   padding: 20px;
 }
 
-.preview-post__descripcion a{
+.preview-post__title{
   display: block;
   margin: 10px 0px;
   font-weight: 700;

@@ -1,13 +1,13 @@
 'use strict'
 
-import Singleton from '../patterns/singleton.js';
+import Helpers  from '../helpers.js';
 import { loadNavbar, loadFooter } from '../sharedScripts.js';
 import '../sharedHtmlElements.js';
 import './htmlElements.js';
 
 let idPost = 0;
-const BASEURL = 'http://localhost:3000';
-const singleton = new Singleton();
+const helpers = new Helpers();
+
 
 //[FUNCTIONS]
 const loadHtml = async () => {
@@ -29,9 +29,9 @@ const loadPost = async () => {
     const urlParams = await getQueryParams();
     idPost = urlParams.get('id');
   
-    const obj = await singleton.getPostById(idPost);
-    const author = await singleton.getAuthorById(obj.author);
-    
+    const obj = await helpers.getPosts({id: idPost});
+    const author = await helpers.getAuthors({id: obj.author});
+  
     displayPostInformation(obj, author);
     loadComments(idPost);
 
@@ -51,9 +51,10 @@ const displayPostInformation = (obj, author) => {
   textLikes.textContent = obj.likes;
 };
 
-const loadComments = async (id) => {
+const loadComments = async () => {
 
-  const comments = await singleton.getCommentsByPostId(id);
+  const comments = await helpers.getComments({id: idPost, sort: 'id', order: 'desc'});
+
   while(commentsContainer.firstChild) commentsContainer.removeChild(commentsContainer.firstChild);
 
   for(let comment of comments){
@@ -68,7 +69,7 @@ const postComment = async () => {
   try{
     const comment = txtComment.value;
     if(comment){
-      await singleton.postData(`${ BASEURL }/comments`, { "comment": comment, "postId": idPost });
+      await helpers.addComment(comment, idPost);
       loadComments(idPost);
       txtComment.value = "";
     }
@@ -80,9 +81,9 @@ const postComment = async () => {
 
 const setLike = async () => {
   try{
-    const obj = await singleton.getPostById(idPost);
+    const obj = await helpers.getPosts({id: idPost});
     const likes = obj.likes + 1;
-    await singleton.patchData(`${ BASEURL }/posts/${idPost}`, { "likes": likes });
+    await helpers.addLike(idPost, likes)
     updateLikes();
   }catch(error){
     console.log(error.message);
@@ -91,13 +92,12 @@ const setLike = async () => {
 
 const updateLikes = async () => {
   try{
-    const obj = await singleton.getPostById(idPost);
+    const obj = await helpers.getPosts({id: idPost});
     textLikes.textContent = obj.likes;
   }catch(error){
     console.log(error.message);
   }
 }
-
 
 //[LISTENERS]
 btnComment.addEventListener('click', postComment);

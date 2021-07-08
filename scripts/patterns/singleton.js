@@ -1,74 +1,24 @@
 let instance = null;
 
 /*SINGLETON*/
-
 class Singleton {
   
-  constructor(){
+  constructor(BASEURL){
+
     if (!instance) {
       instance = this;
     }
 
-    this.url = 'http://localhost:3000';
+    this.url = BASEURL;
 
     return instance;
   }
-
-
-  //Nota: Agregar paginacion
-  async getPost(order = 'desc') {
-    const response = await fetch(`${this.url}/posts?&_order=${order}&_sort=createDate`);
-    const data = await response.json();
-    return data;
-  }
-
-  async getPostById(id) {
-    const response = await fetch(`${this.url}/posts/${id}`);
-
-    if(response.status === 404){
-      throw new Error('Http not found');
-    }
-    const data = await response.json();
-    return data;
-  }
-
-  //Nota: hacerlo configurable
-  async getLastPost({ limit = 3, order = 'asc' } = {}) {
-    const response = await fetch(`${this.url}/posts?_limit=${limit}&_order=${order}&_sort=createDate`);
-    const data = await response.json();
-    return data;
-  }
-
-  async getTags() {
-    const response = await fetch(`${this.url}/tags`);
-    const data = await response.json();
-    return data;
-  }
-
-  async getAuthorById(id) {
-    const response = await fetch(`${this.url}/authors/${id}`);
-    const data = await response.json();
-    return data;
-  }
-
-  async getCommentsByPostId(id) {
-    const response = await fetch(`${this.url}/posts/${id}/comments?_sort=id&_order=desc`);
-    const data = await response.json();
-    return data;
-  }
-
-  async getUsers() {
-    const response = await fetch(`${this.url}/users`);
-    const data = await response.json();
-    return data;
-  }
-
 
   //Reusable functions
   async getData(endpoint = '', message = 'A error has ocurred') {
 
     const response = await fetch(`${this.url}${endpoint}`);
-    
+
     if(!response.ok){
       throw new Error(message);
     }
@@ -78,9 +28,9 @@ class Singleton {
     
   }
 
-  async postData(url = '', data = {}, message = 'A error has ocurred') {
+  async postData(endpoint = '', data = {}, message = 'A error has ocurred') {
 
-    const response = await fetch(url, {
+    const response = await fetch(`${this.url}${endpoint}`, {
       method: 'POST', 
       mode: 'cors',
       cache: 'no-cache', 
@@ -101,9 +51,9 @@ class Singleton {
     
   }
 
-  async patchData(url = '', data = {}, message = 'A error has ocurred') {
+  async patchData(endpoint = '', data = {}, message = 'A error has ocurred') {
 
-    const response = await fetch(url, {
+    const response = await fetch(`${this.url}${endpoint}`, {
       method: 'PATCH', 
       mode: 'cors',
       cache: 'no-cache', 

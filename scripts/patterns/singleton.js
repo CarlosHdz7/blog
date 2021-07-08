@@ -48,7 +48,7 @@ class Singleton {
   }
 
   async getCommentsByPostId(id) {
-    const response = await fetch(`${this.url}/posts/${id}/comments`);
+    const response = await fetch(`${this.url}/posts/${id}/comments?_sort=id&_order=desc`);
     const data = await response.json();
     return data;
   }

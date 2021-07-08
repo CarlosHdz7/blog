@@ -6,6 +6,7 @@ import '../sharedHtmlElements.js';
 import './htmlElements.js';
 
 let idPost = 0;
+const BASEURL = 'http://localhost:3000';
 const singleton = new Singleton();
 
 //[FUNCTIONS]
@@ -60,8 +61,11 @@ const loadComments = async (id) => {
 
 const postComment = async () => {
   try{
-    await singleton.postData('http://localhost:3000/comments', { "comment": "prueba 2", "postId": 1 });
+
+    const comment = txtComment.value;
+    await singleton.postData(`${ BASEURL }/comments`, { "comment": comment, "postId": idPost });
     loadComments(idPost);
+    txtComment.value = "";
 
   }catch(error){
     console.log(error.message);
@@ -69,10 +73,10 @@ const postComment = async () => {
 }
 
 //[LISTENERS]
-// btnComment.addEventListener('click',postComment);
+btnComment.addEventListener('click', postComment);
 
 //[TRIGGERS]
 loadHtml();
 loadPost();
 getQueryParams();
-postComment();
+

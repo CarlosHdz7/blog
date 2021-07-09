@@ -5,6 +5,7 @@
   --gray: #bdc3c7;
   --red: #eb4d4b;
   --yellow: #f9ca24;
+  --aqua:#00cec9;
   --radius: 3px;
   --shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 }
@@ -91,4 +92,9 @@ footer {
   margin: 0px;
   width: 100%;
   height: auto;
+}
+
+.btn-aqua{
+  background-color: var(--aqua);
+  color:var(--white);
 }

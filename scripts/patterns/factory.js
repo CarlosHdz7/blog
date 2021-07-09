@@ -140,8 +140,8 @@ class Tr{
 
     const btnEdit = document.createElement('button');
     const btnDelete = document.createElement('button');
-    btnEdit.textContent = 'Edit';
-    btnDelete.textContent = 'Delete';
+    btnEdit.classList.add('button-edit');
+    btnDelete.classList.add('button-delete');
 
     if(this.events.hasOwnProperty('delete')){
       btnDelete.addEventListener('click', () => {

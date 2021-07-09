@@ -14,3 +14,28 @@
   margin: 0px;
   margin-bottom: 10px;
 }
+
+.button-edit,.button-delete{
+  width: 25px;
+  height: 25px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-origin: content-box;
+  border: none;
+  padding: 5px;
+  border-radius: var(--radius);
+  cursor: pointer;
+  margin: 3px;
+}
+
+.button-edit{
+  background-image: url("../../images/edit.png");
+  background-color: var(--yellow);
+}
+
+.button-delete{
+  background-image: url("../../images/trash.png");
+  background-color: var(--red);
+}
+

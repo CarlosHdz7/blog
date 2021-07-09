@@ -60,7 +60,7 @@ class Post {
     small.classList.add('preview-post__subtitle');
     small2.classList.add('preview-post__date');
     div2.classList.add('preview-post__img');
-    div3.classList.add('preview-post__descripcion');
+    div3.classList.add('preview-post__description');
     (this.size === 'square')
       ? div2.classList.add('img-square')
       : div2.classList.add('img-rectangle');

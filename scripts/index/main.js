@@ -22,7 +22,7 @@ const getPost = async () => {
       'id':  posts[i].id
     });
 
-    normalPostcontainer.appendChild(post);
+    normalPostContainer.appendChild(post);
   }
 
 }
@@ -35,9 +35,9 @@ const getTags = async () => {
   console.log(tags);
 }
 
-const getLastestPost = async () => {  
-  const lastestPosts = await helpers.getPosts({order:'desc', sort:'createDate', limit:3});
-  const lastPost = lastestPosts[0];
+const getLatestPost = async () => {  
+  const latestPosts = await helpers.getPosts({order:'desc', sort:'createDate', limit:3});
+  const lastPost = latestPosts[0];
 
   const post = new HtmlFactory('post', {
     'title': lastPost.title, 
@@ -50,7 +50,7 @@ const getLastestPost = async () => {
 
   main.appendChild(post);
   
-  for(let post of lastestPosts){
+  for(let post of latestPosts){
     const smallPost = new HtmlFactory('smallPost', {
       'title': post.title, 
       'url': post.image, 
@@ -72,4 +72,4 @@ const loadHtml = async () => {
 loadHtml();
 getPost();
 getTags();
-getLastestPost();
+getLatestPost();

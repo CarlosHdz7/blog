@@ -83,7 +83,6 @@ const loadPosts = async (title = '') => {
 
     blogsTableBody.appendChild(trHtml);
   }
-
 }
 
 const loadHtml = async () => {
@@ -135,6 +134,7 @@ const buildDataPost = (action) => {
   }
 
   if(action === 'edit') { data.id = textIdPost.value; };
+  if(action === 'add') { data.createDate = utilities.formatDate(new Date(Date.now()),'yyyy/mm/dd'); };
 
   return data;
 }
@@ -147,11 +147,11 @@ const resetForm = () => {
 const showDeleteModal = (id) => {
   spanIdPost.textContent = id;
   buttonDelete.dataset.idPost = id;
-  modalDelete.style.display = "block";
+  modalDelete.style.display = 'block';
 };
 
 const closeDeleteModal = () => {
-  modalDelete.style.display = "none";
+  modalDelete.style.display = 'none';
 };
 
 //[EVENTS]

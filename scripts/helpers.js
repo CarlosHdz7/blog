@@ -42,12 +42,12 @@ class Helpers{
 
   async addComment (comment, idPost){
     let url = `/comments`;
-    await singleton.postData(url, { "comment": comment, "postId": idPost });
+    await singleton.postData(url, { 'comment': comment, 'postId': idPost });
   }
 
   async addLike (idPost, likes){
     let url = `/posts/${idPost}`;
-    await singleton.patchData(url, { "likes": likes });
+    await singleton.patchData(url, { 'likes': likes });
   }
 
   async addPost (data){

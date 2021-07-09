@@ -7,11 +7,11 @@ class SmallPost {
   }
 
   create(){
-    let div1 = document.createElement('div');
-    let div2 = document.createElement('div');
-    let div3 = document.createElement('div');
-    let img = document.createElement('img');
-    let a = document.createElement('a');
+    const div1 = document.createElement('div');
+    const div2 = document.createElement('div');
+    const div3 = document.createElement('div');
+    const img = document.createElement('img');
+    const a = document.createElement('a');
 
     a.textContent = this.title;
     a.href = `post.html?id=${this.id}`;
@@ -42,13 +42,13 @@ class Post {
   }
 
   create(){
-    let div1 = document.createElement('div');
-    let div2 = document.createElement('div');
-    let div3 = document.createElement('div');
-    let img = document.createElement('img');
-    let a = document.createElement('a');
-    let small = document.createElement('small');
-    let small2 = document.createElement('small');
+    const div1 = document.createElement('div');
+    const div2 = document.createElement('div');
+    const div3 = document.createElement('div');
+    const img = document.createElement('img');
+    const a = document.createElement('a');
+    const small = document.createElement('small');
+    const small2 = document.createElement('small');
 
     a.textContent = this.title;
     a.href = `post.html?id=${this.id}`;
@@ -86,8 +86,8 @@ class Tags {
   }
 
   create(){
-    let span = document.createElement('span');
-    let text = document.createTextNode(this.text);
+    const span = document.createElement('span');
+    const text = document.createTextNode(this.text);
     span.appendChild(text);
 
     return span;
@@ -100,12 +100,12 @@ class Comment{
   }
 
   create(){
-    let div = document.createElement('div');
-    let p = document.createElement('p');
-    let span1 = document.createElement('span');
-    let span2 = document.createElement('span2');
-    let text1 = document.createTextNode('Anonymous');
-    let text2 = document.createTextNode(this.comment);
+    const div = document.createElement('div');
+    const p = document.createElement('p');
+    const span1 = document.createElement('span');
+    const span2 = document.createElement('span2');
+    const text1 = document.createTextNode('Anonymous');
+    const text2 = document.createTextNode(this.comment);
 
 
     div.classList.add('comment');
@@ -131,15 +131,15 @@ class Tr{
   }
 
   create(){
-    let tr = document.createElement('tr');
-    let tdId = document.createElement('td');
-    let tdTitle = document.createElement('td');
-    let tdAuthor = document.createElement('td');
-    let tdDate = document.createElement('td');
-    let tdOptions = document.createElement('td');
+    const tr = document.createElement('tr');
+    const tdId = document.createElement('td');
+    const tdTitle = document.createElement('td');
+    const tdAuthor = document.createElement('td');
+    const tdDate = document.createElement('td');
+    const tdOptions = document.createElement('td');
 
-    let btnEdit = document.createElement('button');
-    let btnDelete = document.createElement('button');
+    const btnEdit = document.createElement('button');
+    const btnDelete = document.createElement('button');
     btnEdit.textContent = 'Edit';
     btnDelete.textContent = 'Delete';
 
@@ -149,10 +149,10 @@ class Tr{
       })
     }
 
-    let txtId = document.createTextNode(this.id);
-    let txtTitle = document.createTextNode(this.title);
-    let txtAuthor = document.createTextNode(this.author);
-    let txtDate = document.createTextNode(this.date);
+    const txtId = document.createTextNode(this.id);
+    const txtTitle = document.createTextNode(this.title);
+    const txtAuthor = document.createTextNode(this.author);
+    const txtDate = document.createTextNode(this.date);
 
     tdId.appendChild(txtId);
     tdTitle.appendChild(txtTitle);

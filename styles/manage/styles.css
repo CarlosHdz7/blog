@@ -1,15 +1,16 @@
 @import url("../utilities.css");
 @import url("../shared.css");
 
-.posts-container,.form-container{
+.posts-container,
+.form-container {
   background-color: var(--white);
   padding: 30px;
-  border-radius:var(--radius);
-  margin:20px 0px;
+  border-radius: var(--radius);
+  margin: 20px 0px;
   box-shadow: var(--shadow);
 }
 
-.title{
+.title {
   margin: 0px;
   margin-bottom: 10px;
 }

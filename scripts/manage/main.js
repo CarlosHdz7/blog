@@ -13,9 +13,6 @@ const utilities = new Utilities();
 //[FUNCTIONS]
 const addPost = async () => {
   try{
-
-    formTitle.textContent = 'Add post';
-
     const data = buildDataPost('add');
 
     await helpers.addPost(data);
@@ -50,7 +47,6 @@ const editPost = async () => {
 
 const loadPost = async (id) => {
   try {
-    formTitle.textContent = 'Edit post';
     toggleEventsSaveButton('edit');
 
     const post = await helpers.getPosts({id: id});
@@ -109,11 +105,14 @@ const displayInformation = async (post) => {
 
 const toggleEventsSaveButton = (action) => { 
   if(action === 'add'){
+    resetForm();
+    formTitle.textContent = 'Add post';
     buttonSave.removeEventListener('click', editPost);
     buttonSave.addEventListener('click', addPost);
   }
 
   if(action === 'edit'){
+    formTitle.textContent = 'Edit post';
     buttonSave.removeEventListener('click', addPost);
     buttonSave.addEventListener('click', editPost);
   }
@@ -136,6 +135,11 @@ const buildDataPost = (action) => {
   return data;
 }
 
+const resetForm = () => {
+  textDescription.textContent = '';
+  formContainer.reset();
+}
+
 //[EVENTS]
 buttonShowForm.addEventListener('click', () => {
   toggleEventsSaveButton('add');
@@ -145,3 +149,4 @@ buttonShowForm.addEventListener('click', () => {
 //[TRIGGERS]
 loadHtml();
 loadPosts();
+resetForm();

@@ -165,6 +165,14 @@ buttonDelete.addEventListener('click', async (event) => {
   closeDeleteModal();
 });
 
+buttonCancel.addEventListener('click', () => {
+  closeDeleteModal();
+});
+
+closeSpan.addEventListener('click', () => {
+  closeDeleteModal();
+});
+
 inputSearch.addEventListener('keyup', debounce(() => {
   loadPosts(inputSearch.value);
 }, 500));

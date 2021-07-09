@@ -18,7 +18,7 @@
     <div class="posts-container" id="postsContainer">
       <h4 class="title">Blog's list</h1>
         <div class="mb-2 d-flex justify-content-end">
-          <button type="button" class="btn" id="buttonAddPost">Add</button>
+          <button type="button" class="btn" id="buttonShowForm">Add</button>
         </div>
         <table class="table">
           <thead>
@@ -47,15 +47,15 @@
     <div class="form-container d-none" id="formContainer">
       <h4 class="title">Add Post</h4>
       <p>Title</p>
-      <input type="text" class="input">
+      <input type="text" class="input" id="textTitle">
       <p>SubTitle</p>
-      <input type="text" class="input">
+      <input type="text" class="input" id="textSubTitle">
       <p>Description</p>
-      <textarea name="" id="" rows="10" class="input"></textarea>
+      <textarea name="" rows="10" class="input" id="textDescription"></textarea>
       <p>URL image</p>
-      <input type="text" class="input">
+      <input type="text" class="input" id="textUrlImage">
       <div class="d-flex justify-content-end mt-2">
-        <button type="button" class="btn">Save</button>
+        <button type="button" class="btn" id="buttonSave">Save</button>
       </div>
     </div>
   </div>

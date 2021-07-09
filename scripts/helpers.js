@@ -5,7 +5,7 @@ const singleton = new Singleton(BASE_URL);
 
 class Helpers{
 
-  //Agregar paginacion
+  //Add pagination
   async getPosts ({order, sort, limit, id} = {}){
     let url = `/posts?`;
     
@@ -47,6 +47,11 @@ class Helpers{
   async addLike (idPost, likes){
     let url = `/posts/${idPost}`;
     await singleton.patchData(url, { "likes": likes });
+  }
+
+  async addPost (data){
+    let url = `/posts`;
+    await singleton.postData(url, data);
   }
 
   async deletePost (id){

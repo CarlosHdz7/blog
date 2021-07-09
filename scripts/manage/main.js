@@ -5,8 +5,10 @@ import HtmlFactory from '../patterns/factory.js';
 import { loadNavbar, loadFooter } from '../sharedScripts.js';
 import './htmlElements.js';
 import '../sharedHtmlElements.js';
+import Utilities from '../utilities.js';
 
 const helpers = new Helpers();
+const utilities = new Utilities();
 
 //[FUNCTIONS]
 const deletePost = async (id) => {
@@ -48,6 +50,44 @@ const loadHtml = async () => {
   navbarContainer.innerHTML = navbar;
   footerContainer.innerHTML = footer;
 };
+
+const toggleContainers = () => {
+  postsContainer.classList.toggle('d-none');
+  formContainer.classList.toggle('d-none');
+};
+
+const addPost = async () => {
+  try{
+
+    const data = {
+      'title':textTitle.value,
+      'subTitle':textSubTitle.value,
+      'image':textUrlImage.value,
+      'body':textDescription.value,
+      'createDate': utilities.formatDate(new Date(Date.now()),'yyyy/mm/dd'),
+      'likes':0,
+      'author':1,
+      'tags': []
+    }
+
+    await helpers.addPost(data);
+    await loadPost();
+    toggleContainers();
+
+  }catch(error){
+    console.log(error.message);
+  }
+};
+
+//[EVENTS]
+buttonShowForm.addEventListener('click', () => {
+  toggleContainers();
+})
+
+buttonSave.addEventListener('click', () => {
+  addPost();
+});
+
 //[TRIGGERS]
 loadHtml();
 loadPost();

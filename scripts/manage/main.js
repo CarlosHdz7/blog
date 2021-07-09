@@ -142,7 +142,12 @@ const resetForm = () => {
 
 const showDeleteModal = (id) => {
   spanIdPost.textContent = id;
+  buttonDelete.dataset.idPost = id;
   modalDelete.style.display = "block";
+};
+
+const closeDeleteModal = () => {
+  modalDelete.style.display = "none";
 };
 
 //[EVENTS]
@@ -151,9 +156,14 @@ buttonShowForm.addEventListener('click', () => {
   toggleContainers();
 });
 
+buttonDelete.addEventListener('click', async (event) => {
+  await deletePost(event.target.dataset.idPost);
+  closeDeleteModal();
+});
+
 window.addEventListener('click', (event) => {
   if (event.target == modalDelete) {
-    modalDelete.style.display = "none";
+    closeDeleteModal();
   }
 });
 

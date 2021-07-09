@@ -9,5 +9,6 @@ const textSubTitle = document.createElement('textSubTitle');
 const textDescription = document.createElement('textDescription');
 const textUrlImage = document.createElement('textUrlImage');
 const buttonSave = document.createElement('buttonSave');
+const buttonDelete = document.createElement('buttonDelete');
 const modalDelete = document.getElementById('modalDelete');
 const spanIdPost = document.getElementById('spanIdPost');

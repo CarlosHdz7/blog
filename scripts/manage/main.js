@@ -3,6 +3,7 @@
 import Helpers  from '../helpers.js';
 import HtmlFactory from '../patterns/factory.js';
 import { loadNavbar, loadFooter } from '../sharedScripts.js';
+import { debounce } from '../algorithms.js';
 import './htmlElements.js';
 import '../sharedHtmlElements.js';
 import Utilities from '../utilities.js';
@@ -58,9 +59,12 @@ const loadPost = async (id) => {
   }
 };
 
-const loadPosts = async () => {
+const loadPosts = async (title = '') => {
 
-  const posts = await helpers.getPosts({order:'desc', sort:'createDate'});
+  let data = {order:'desc', sort:'createDate'};
+  if(title) data.title = title;
+
+  const posts = await helpers.getPosts(data);
   console.log(posts);
 
   while(blogsTableBody.firstChild) blogsTableBody.removeChild(blogsTableBody.firstChild);
@@ -160,6 +164,10 @@ buttonDelete.addEventListener('click', async (event) => {
   await deletePost(event.target.dataset.idPost);
   closeDeleteModal();
 });
+
+inputSearch.addEventListener('keyup', debounce(() => {
+  loadPosts(inputSearch.value);
+}, 500));
 
 window.addEventListener('click', (event) => {
   if (event.target == modalDelete) {

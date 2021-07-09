@@ -39,7 +39,7 @@
   background-color: var(--red);
 }
 
-.inputSearch{
+.input-search{
   padding: 10px;
   border-radius: var(--radius);
   border:2px solid var(--background);

@@ -12,3 +12,4 @@ const buttonSave = document.createElement('buttonSave');
 const buttonDelete = document.createElement('buttonDelete');
 const modalDelete = document.getElementById('modalDelete');
 const spanIdPost = document.getElementById('spanIdPost');
+const inputSearch = document.getElementById('inputSearch');

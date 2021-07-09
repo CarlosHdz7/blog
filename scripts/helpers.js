@@ -6,12 +6,13 @@ const singleton = new Singleton(BASE_URL);
 class Helpers{
 
   //Add pagination
-  async getPosts ({order, sort, limit, id} = {}){
+  async getPosts ({order, sort, limit, title,id} = {}){
     let url = `/posts?`;
     
     if(order) url += `&_order=${order}`;
     if(sort) url += `&_sort=${sort}`;
     if(limit) url += `&_limit=${limit}`;
+    if(title) url += `&title_like=${title}`;
     if(id) url = `/posts/${id}`;
   
     const data = await singleton.getData(url);

@@ -96,6 +96,29 @@ class Singleton {
     
   }
 
+  async updateData(endpoint = '', data = {}, message = 'A error has ocurred') {
+
+    const response = await fetch(`${this.url}${endpoint}`, {
+      method: 'UPDATE', 
+      mode: 'cors',
+      cache: 'no-cache', 
+      credentials: 'same-origin',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      redirect: 'follow',
+      referrerPolicy: 'no-referrer', 
+      body: JSON.stringify(data)
+    });
+
+    if(!response.ok){
+      throw new Error(message);
+    }
+
+    return response.json();
+    
+  }
+
 }
 
 export default Singleton;

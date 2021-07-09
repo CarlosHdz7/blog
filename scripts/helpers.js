@@ -54,6 +54,16 @@ class Helpers{
     await singleton.postData(url, data);
   }
 
+  async updatePost (data){
+    let url = `/posts/${data.id}`;
+    await singleton.updateData(url, data);
+  }
+
+  async patchPost (data){
+    let url = `/posts/${data.id}`;
+    await singleton.patchData(url, data);
+  }
+
   async deletePost (id){
     let url = `/posts/${id}`;
     const data = await singleton.deleteData(url);

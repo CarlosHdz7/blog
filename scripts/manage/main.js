@@ -16,19 +16,10 @@ const addPost = async () => {
 
     formTitle.textContent = 'Add post';
 
-    const data = {
-      'title':textTitle.value,
-      'subTitle':textSubTitle.value,
-      'image':textUrlImage.value,
-      'body':textDescription.value,
-      'createDate': utilities.formatDate(new Date(Date.now()),'yyyy/mm/dd'),
-      'likes':0,
-      'author':1,
-      'tags': []
-    }
+    const data = buildDataPost('add');
 
     await helpers.addPost(data);
-    await loadPost();
+    await loadPosts();
     toggleContainers();
 
   }catch(error){
@@ -36,9 +27,31 @@ const addPost = async () => {
   }
 };
 
-const editPost = async (id) => {
+const deletePost = async (id) => {
+  try {
+    await helpers.deletePost(id);
+    loadPosts();
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+
+const editPost = async () => {
+  try{
+    const data = buildDataPost('edit');
+    await helpers.patchPost(data);
+    await loadPosts();
+    toggleContainers();
+
+  }catch(error){
+    console.log(error.message);
+  }
+}
+
+const loadPost = async (id) => {
   try {
     formTitle.textContent = 'Edit post';
+    toggleEventsSaveButton('edit');
 
     const post = await helpers.getPosts({id: id});
     console.log(post);
@@ -49,18 +62,7 @@ const editPost = async (id) => {
   }
 };
 
-const deletePost = async (id) => {
-  try {
-    await helpers.deletePost(id);
-    loadPost();
-  } catch (error) {
-    console.log(error.message);
-  }
-};
-
-
-
-const loadPost = async () => {
+const loadPosts = async () => {
 
   const posts = await helpers.getPosts({order:'desc', sort:'createDate'});
   console.log(posts);
@@ -75,7 +77,7 @@ const loadPost = async () => {
       'author':  post.author,
       'events':{
         'delete': deletePost,
-        'edit': editPost
+        'edit': loadPost
       }
     });
 
@@ -98,21 +100,48 @@ const toggleContainers = () => {
 };
 
 const displayInformation = async (post) => {
+  textIdPost.value = post.id;
   textTitle.value = post.title;
   textSubTitle.value = post.subTitle;
   textDescription.textContent = post.body;
   textUrlImage.value = post.image;
 };
 
+const toggleEventsSaveButton = (action) => { 
+  if(action === 'add'){
+    buttonSave.removeEventListener('click', editPost);
+    buttonSave.addEventListener('click', addPost);
+  }
+
+  if(action === 'edit'){
+    buttonSave.removeEventListener('click', addPost);
+    buttonSave.addEventListener('click', editPost);
+  }
+};
+
+const buildDataPost = (action) => {
+  let data = {
+    'title':textTitle.value,
+    'subTitle':textSubTitle.value,
+    'image':textUrlImage.value,
+    'body':textDescription.value,
+    'createDate': utilities.formatDate(new Date(Date.now()),'yyyy/mm/dd'),
+    'likes':0,
+    'author':1,
+    'tags': []
+  }
+
+  if(action === 'edit') { data.id = textIdPost.value; };
+
+  return data;
+}
+
 //[EVENTS]
 buttonShowForm.addEventListener('click', () => {
+  toggleEventsSaveButton('add');
   toggleContainers();
 })
 
-buttonSave.addEventListener('click', () => {
-  addPost();
-});
-
 //[TRIGGERS]
 loadHtml();
-loadPost();
+loadPosts();

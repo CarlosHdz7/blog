@@ -3,13 +3,13 @@ let instance = null;
 /*SINGLETON*/
 class Singleton {
   
-  constructor(BASEURL){
+  constructor(BASE_URL){
 
     if (!instance) {
       instance = this;
     }
 
-    this.url = BASEURL;
+    this.url = BASE_URL;
 
     return instance;
   }

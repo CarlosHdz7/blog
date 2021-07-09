@@ -67,11 +67,11 @@ const loadComments = async () => {
 
 const postComment = async () => {
   try{
-    const comment = txtComment.value;
+    const comment = textComment.value;
     if(comment){
       await helpers.addComment(comment, idPost);
       loadComments(idPost);
-      txtComment.value = "";
+      textComment.value = "";
     }
 
   }catch(error){
@@ -100,8 +100,8 @@ const updateLikes = async () => {
 }
 
 //[LISTENERS]
-btnComment.addEventListener('click', postComment);
-btnLike.addEventListener('click', setLike);
+buttonComment.addEventListener('click', postComment);
+buttonLike.addEventListener('click', setLike);
 
 //[TRIGGERS]
 loadHtml();

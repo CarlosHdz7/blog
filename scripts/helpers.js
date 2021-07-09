@@ -1,7 +1,7 @@
 import Singleton from './patterns/singleton.js';
 
-const BASEURL = 'http://localhost:3000';
-const singleton = new Singleton(BASEURL);
+const BASE_URL = 'http://localhost:3000';
+const singleton = new Singleton(BASE_URL);
 
 class Helpers{
 

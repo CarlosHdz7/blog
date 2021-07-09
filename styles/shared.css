@@ -99,3 +99,8 @@ footer {
   background-color: var(--aqua);
   color:var(--white);
 }
+
+.btn-red{
+  background-color: var(--red);
+  color:var(--white);
+}

@@ -72,7 +72,7 @@ const loadPosts = async () => {
       'date': post.createDate,
       'author':  post.author,
       'events':{
-        'delete': deletePost,
+        'delete': showDeleteModal,
         'edit': loadPost
       }
     });
@@ -140,19 +140,20 @@ const resetForm = () => {
   formContainer.reset();
 }
 
+const showDeleteModal = (id) => {
+  spanIdPost.textContent = id;
+  modalDelete.style.display = "block";
+};
+
 //[EVENTS]
 buttonShowForm.addEventListener('click', () => {
   toggleEventsSaveButton('add');
   toggleContainers();
 });
 
-showModal.addEventListener('click', () => {
-  myModal.style.display = "block";
-});
-
 window.addEventListener('click', (event) => {
-  if (event.target == myModal) {
-    myModal.style.display = "none";
+  if (event.target == modalDelete) {
+    modalDelete.style.display = "none";
   }
 });
 

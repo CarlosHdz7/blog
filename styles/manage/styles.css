@@ -38,12 +38,3 @@
   background-image: url("../../images/trash.png");
   background-color: var(--red);
 }
-
-.alert-message{
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  background-color: rgba(43,43,43,0.5);
-}

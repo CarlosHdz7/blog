@@ -45,6 +45,18 @@
   margin-bottom: 15px;
 }
 
+.mr-1 {
+  margin-right: 5px;
+}
+
+.mr-2 {
+  margin-right: 10px;
+}
+
+.mr-3 {
+  margin-right: 15px;
+}
+
 .d-none {
   display: none;
 }

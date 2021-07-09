@@ -19,7 +19,6 @@
       <h4 class="title">Blog's list</h1>
         <div class="mb-2 d-flex justify-content-end">
           <button type="button" class="btn btn-aqua" id="buttonShowForm">Add Blog</button>
-          <button type="button" class="btn btn-aqua" id="showModal">Modal</button>
         </div>
         <table class="table">
           <thead>
@@ -66,13 +65,19 @@
   <div class="alert-message d-none" id="alertMessage"></div>
 
     <!-- The Modal -->
-  <div id="myModal" class="modal">
+  <div id="modalDelete" class="modal">
 
-    <!-- Modal content -->
-    <div class="modal-content">
-      <span class="close">&times;</span>
-      <p>Some text in the Modal..</p>
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="d-flex justify-content-end">
+      <span class="close">&times;</span>      
     </div>
+    <p>Are you sure you want to delete post #<span id="spanIdPost">-</span></p>
+    <div class="d-flex justify-content-end">
+      <button type="button" class="btn btn-red mr-2">Delete</button>
+      <button type="button" class="btn">Cancel</button>
+    </div>
+  </div>
 
   </div>
 

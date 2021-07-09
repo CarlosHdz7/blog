@@ -9,3 +9,5 @@ const textSubTitle = document.createElement('textSubTitle');
 const textDescription = document.createElement('textDescription');
 const textUrlImage = document.createElement('textUrlImage');
 const buttonSave = document.createElement('buttonSave');
+const myModal = document.getElementById('myModal'); //cambiar
+const showModal = document.getElementById('showModal');

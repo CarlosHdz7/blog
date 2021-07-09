@@ -18,7 +18,8 @@
     <div class="posts-container" id="postsContainer">
       <h4 class="title">Blog's list</h1>
         <div class="mb-2 d-flex justify-content-end">
-          <button type="button" class="btn btn-aqua" id="buttonShowForm">Add</button>
+          <button type="button" class="btn btn-aqua" id="buttonShowForm">Add Blog</button>
+          <button type="button" class="btn btn-aqua" id="showModal">Modal</button>
         </div>
         <table class="table">
           <thead>
@@ -41,7 +42,6 @@
             </tr> -->
           </tbody>
         </table>
-
     </div>
 
     <form class="form-container d-none" id="formContainer">
@@ -62,6 +62,19 @@
   </div>
 
   <div id="footerContainer"></div>
+
+  <div class="alert-message d-none" id="alertMessage"></div>
+
+    <!-- The Modal -->
+  <div id="myModal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <p>Some text in the Modal..</p>
+    </div>
+
+  </div>
 
   <script type="module" src="scripts/manage/main.js"></script>
 </body>

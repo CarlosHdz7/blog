@@ -144,7 +144,17 @@ const resetForm = () => {
 buttonShowForm.addEventListener('click', () => {
   toggleEventsSaveButton('add');
   toggleContainers();
-})
+});
+
+showModal.addEventListener('click', () => {
+  myModal.style.display = "block";
+});
+
+window.addEventListener('click', (event) => {
+  if (event.target == myModal) {
+    myModal.style.display = "none";
+  }
+});
 
 //[TRIGGERS]
 loadHtml();

@@ -15,8 +15,11 @@
   <div id="navbarContainer"></div>
   
   <div class="container">
-    <div class="posts-container">
+    <div class="posts-container" id="postsContainer">
       <h4 class="title">Blog's list</h1>
+        <div class="mb-2 d-flex justify-content-end">
+          <button type="button" class="btn" id="buttonAddPost">Add</button>
+        </div>
         <table class="table">
           <thead>
             <th>Id</th>
@@ -39,6 +42,21 @@
           </tbody>
         </table>
 
+    </div>
+
+    <div class="form-container d-none" id="formContainer">
+      <h4 class="title">Add Post</h4>
+      <p>Titulo</p>
+      <input type="text" class="input">
+      <p>Subtitulo</p>
+      <input type="text" class="input">
+      <p>Descripcion</p>
+      <textarea name="" id="" rows="10" class="input"></textarea>
+      <p>URL image</p>
+      <input type="text" class="input">
+      <div class="d-flex justify-content-end mt-2">
+        <button type="button" class="btn">Save</button>
+      </div>
     </div>
   </div>
 

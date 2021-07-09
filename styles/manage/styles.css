@@ -1,7 +1,7 @@
 @import url("../utilities.css");
 @import url("../shared.css");
 
-.posts-container{
+.posts-container,.form-container{
   background-color: var(--white);
   padding: 30px;
   border-radius:var(--radius);

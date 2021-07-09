@@ -1,25 +1,25 @@
 @import url("../utilities.css");
 @import url("../shared.css");
 
-*{
+* {
   /* border:1px solid red; */
 }
 
-header{
-  width:100%;
-  height:auto;
+header {
+  width: 100%;
+  height: auto;
 }
 
-main{
+main {
   padding: 10px 0px;
   height: auto;
 }
 
-aside{
+aside {
   padding: 10px;
 }
 
-section{
+section {
   width: 100%;
   height: auto;
   display: grid;
@@ -30,71 +30,72 @@ section{
   justify-items: center;
 }
 
-.title{
+.title {
   margin-top: 0px;
 }
 
-.inner-container{
+.inner-container {
   display: grid;
   grid-template-columns: 8fr 4fr;
   grid-template-rows: auto;
-  grid-gap:10px;
+  grid-gap: 10px;
   margin-bottom: 20px;
 }
 
-.preview-post{
+.preview-post {
   width: 320px;
   height: auto;
-  border-radius:var(--radius);
+  border-radius: var(--radius);
   background-color: var(--white);
   box-shadow: var(--shadow);
 }
 
-.img-square{
+.img-square {
   height: 180px;
 }
 
-.img-rectangle{
+.img-rectangle {
   height: 350px;
 }
 
-.preview-post__img img{
+.preview-post__img img {
   width: 100%;
   height: 100%;
 }
 
-.preview-post__descripcion{
+.preview-post__descripcion {
   padding: 20px;
 }
 
-.preview-post__title{
+.preview-post__title {
   display: block;
   margin: 10px 0px;
   font-weight: 700;
 }
 
-.preview-post__subtitle,.preview-post__date{
+.preview-post__subtitle,
+.preview-post__date {
   display: block;
 }
 
-.preview-post__subtitle{
+.preview-post__subtitle {
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
   margin-bottom: 8px;
 }
 
-.preview-post__date{
+.preview-post__date {
   text-align: right;
-  color:var(--gray);
+  color: var(--gray);
   font-weight: 700;
 }
 
-.preview-small-post{
+.preview-small-post {
   width: 100%;
   height: 80px;
   margin-bottom: 10px;
-  border-radius:var(--radius);
+  border-radius: var(--radius);
   background-color: var(--white);
   box-shadow: var(--shadow);
   display: grid;
@@ -103,12 +104,12 @@ section{
   cursor: pointer;
 }
 
-.small-post__img img{
+.small-post__img img {
   width: 100%;
   height: 100%;
 }
 
-.small-post__title{
+.small-post__title {
   padding: 5px;
   display: flex;
   align-items: center;

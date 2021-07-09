@@ -1,62 +1,64 @@
 @import url("../utilities.css");
 @import url("../shared.css");
 
-
-*{
+* {
   /* border:1px solid red; */
 }
 
-.post-container, .comments-container, .arrow-container{
+.post-container,
+.comments-container,
+.arrow-container {
   background-color: var(--white);
   padding: 30px;
-  border-radius:var(--radius);
-  margin:20px 0px;
+  border-radius: var(--radius);
+  margin: 20px 0px;
   box-shadow: var(--shadow);
 }
 
-.arrow-container{
+.arrow-container {
   padding: 15px;
   margin: 20px 0px;
   display: flex;
   align-items: center;
 }
 
-.text-comment{
+.text-comment {
   box-sizing: border-box;
 }
 
-.like-container{
+.like-container {
   width: 100%;
   display: flex;
   justify-content: end;
 }
 
-.like{
+.like {
   width: 20px;
   height: 20px;
-  background-image: url('../../images/heart.png');
-  background-position: center; 
-  background-repeat: no-repeat; 
+  background-image: url("../../images/heart.png");
+  background-position: center;
+  background-repeat: no-repeat;
   background-size: cover;
   background-origin: content-box;
 }
 
-.like:hover{
+.like:hover {
   cursor: pointer;
 }
 
-.comment{
-  border:1px solid gray;
+.comment {
+  border: 1px solid gray;
   padding: 2px 20px;
-  border-radius:var(--radius);
+  border-radius: var(--radius);
   margin-bottom: 10px;
 }
 
-.comment__user,.comment__text{
+.comment__user,
+.comment__text {
   font-size: 12px;
 }
 
-.comment__user{
+.comment__user {
   font-weight: 700;
   margin-right: 4px;
 }

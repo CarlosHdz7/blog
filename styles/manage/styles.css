@@ -38,3 +38,13 @@
   background-image: url("../../images/trash.png");
   background-color: var(--red);
 }
+
+.inputSearch{
+  padding: 10px;
+  border-radius: var(--radius);
+  border:2px solid var(--background);
+  width: 100%;
+  font-family: 'Montserrat';
+  margin-bottom: 10px;
+  box-sizing: border-box;
+}

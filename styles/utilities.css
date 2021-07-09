@@ -81,31 +81,39 @@
 
 .table td,
 .table th {
-  border: 1px solid #ddd;
+  /* border: 1px solid #ddd; */
   padding: 8px;
 }
 
-.table tr:nth-child(even) {
+/* .table tr:nth-child(even) {
   background-color: #f2f2f2;
-}
+} */
 
 .table tr:hover {
-  background-color: #ddd;
+  background-color: var(--background);
 }
 
 .table th {
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: left;
-  background-color: var(--black1);
-  color: white;
+  background-color: var(--background);
+  color: var(--black1);
+}
+
+thead th:first-child{
+  border-radius: 3px 0px 0px 3px;
+}
+
+
+thead th:last-child{
+  border-radius: 0px 3px 3px 0px;
 }
 
 .input {
   width: 100%;
   padding: 10px;
-  border: 1px solid var(--gray);
-  border-radius: var(--radius);
+  /* border: 1px solid var(--gray); */
   box-sizing: border-box;
   font-family: "Montserrat", sans-serif;
   font-size: 14px;

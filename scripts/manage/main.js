@@ -11,6 +11,44 @@ const helpers = new Helpers();
 const utilities = new Utilities();
 
 //[FUNCTIONS]
+const addPost = async () => {
+  try{
+
+    formTitle.textContent = 'Add post';
+
+    const data = {
+      'title':textTitle.value,
+      'subTitle':textSubTitle.value,
+      'image':textUrlImage.value,
+      'body':textDescription.value,
+      'createDate': utilities.formatDate(new Date(Date.now()),'yyyy/mm/dd'),
+      'likes':0,
+      'author':1,
+      'tags': []
+    }
+
+    await helpers.addPost(data);
+    await loadPost();
+    toggleContainers();
+
+  }catch(error){
+    console.log(error.message);
+  }
+};
+
+const editPost = async (id) => {
+  try {
+    formTitle.textContent = 'Edit post';
+
+    const post = await helpers.getPosts({id: id});
+    console.log(post);
+    await displayInformation(post);
+    toggleContainers();
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+
 const deletePost = async (id) => {
   try {
     await helpers.deletePost(id);
@@ -18,7 +56,9 @@ const deletePost = async (id) => {
   } catch (error) {
     console.log(error.message);
   }
-}
+};
+
+
 
 const loadPost = async () => {
 
@@ -34,7 +74,8 @@ const loadPost = async () => {
       'date': post.createDate,
       'author':  post.author,
       'events':{
-        'delete': deletePost
+        'delete': deletePost,
+        'edit': editPost
       }
     });
 
@@ -56,27 +97,11 @@ const toggleContainers = () => {
   formContainer.classList.toggle('d-none');
 };
 
-const addPost = async () => {
-  try{
-
-    const data = {
-      'title':textTitle.value,
-      'subTitle':textSubTitle.value,
-      'image':textUrlImage.value,
-      'body':textDescription.value,
-      'createDate': utilities.formatDate(new Date(Date.now()),'yyyy/mm/dd'),
-      'likes':0,
-      'author':1,
-      'tags': []
-    }
-
-    await helpers.addPost(data);
-    await loadPost();
-    toggleContainers();
-
-  }catch(error){
-    console.log(error.message);
-  }
+const displayInformation = async (post) => {
+  textTitle.value = post.title;
+  textSubTitle.value = post.subTitle;
+  textDescription.textContent = post.body;
+  textUrlImage.value = post.image;
 };
 
 //[EVENTS]

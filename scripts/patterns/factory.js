@@ -149,6 +149,12 @@ class Tr{
       })
     }
 
+    if(this.events.hasOwnProperty('edit')){
+      btnEdit.addEventListener('click', () => {
+        this.events.edit(this.id);
+      })
+    }
+
     const txtId = document.createTextNode(this.id);
     const txtTitle = document.createTextNode(this.title);
     const txtAuthor = document.createTextNode(this.author);

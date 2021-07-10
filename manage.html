@@ -47,22 +47,50 @@
     </div>
 
     <form class="form-container d-none" id="formContainer">
+      <input type="hidden" id="textIdPost">
+
       <div class="mb-2 d-flex justify-content-between align-items-center">
         <h4 class="title" id="formTitle">Add Post</h4>
         <button type="button" class="btn" id="buttonBackForm">Back</button>
       </div>
-      <input type="hidden" id="textIdPost">
-      <p>Title</p>
-      <input type="text" class="input" id="textTitle">
-      <p>SubTitle</p>
-      <input type="text" class="input" id="textSubTitle">
-      <p>Description</p>
-      <textarea name="" rows="10" class="input" id="textDescription"></textarea>
-      <p>URL image</p>
-      <input type="text" class="input" id="textUrlImage">
-      <div class="d-flex justify-content-end mt-2">
+      
+      <div class="inner-form">
+
+        <!-- MAIN -->
+        <div class="inner-form__left">
+          <p>Title</p>
+          <input type="text" class="input" id="textTitle">
+          <p>SubTitle</p>
+          <input type="text" class="input" id="textSubTitle">
+          <p>Description</p>
+          <textarea name="" rows="10" class="input" id="textDescription"></textarea>
+          <p>URL image</p>
+          <input type="text" class="input" id="textUrlImage">
+        </div>
+        
+        <!-- TAGS -->
+        <div class="inner-form__right">
+          <p>Tags</p>
+          <div class="container-input">
+            <input type="text" class="input-search" placeholder="Search tag" id="inputSearchTags">
+            <div class="container__results" id="containerResults">
+              <!-- <div class="container-results__item">Nintendo</div> -->
+            </div>
+          </div>
+          <div class="tags-container"> 
+            <span class="tag">Nintendo</span>
+            <span class="tag">Xbox</span>
+            <span class="tag">PlayStation</span>
+            <span class="tag">PC</span>
+          </div>
+        </div>
+        
+      </div>
+
+      <div class="d-flex justify-content-start mt-2">
         <button type="button" class="btn btn-aqua" id="buttonSave">Save</button>
       </div>
+
     </form>
   </div>
 

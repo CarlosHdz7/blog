@@ -176,7 +176,6 @@ class Tr{
     return tr;
   }
 }
-
 class TrNoResults{
   constructor(props){
     this.colSpan = props.colSpan;
@@ -197,6 +196,29 @@ class TrNoResults{
     return tr;
   }
 }
+class ItemResultTag{
+  constructor(props){
+    this.name = props.name;
+    this.id = props.id;
+    this.events = props.events;
+    return this.create();
+  }
+
+  create(){
+    const item = document.createElement('div');
+    item.textContent = this.name;
+    item.classList.add('container-results__item');
+
+    if(this.events.hasOwnProperty('select')){
+      item.addEventListener('click', () => {
+        this.events.select(this.id);
+      });
+    }
+
+    return item;
+  }
+}
+
 class HtmlFactory {
   constructor(type, props) {
     if(type === "post")
@@ -211,6 +233,8 @@ class HtmlFactory {
       return new Tr(props);
     if(type === "trNoResults")
       return new TrNoResults(props);
+    if(type === "itemResultTag")
+      return new ItemResultTag(props);
   }
 };
 

@@ -17,6 +17,10 @@
   display: flex;
 }
 
+.justify-content-start {
+  justify-content: start;
+}
+
 .justify-content-end {
   justify-content: end;
 }

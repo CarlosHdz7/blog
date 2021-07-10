@@ -19,8 +19,17 @@ class Helpers{
     return data;
   }
 
-  async getTags (){
-    let url = `/tags`;
+  async getTags ({name, ignoreTags} = {}){
+    let url = `/tags?`;
+
+    if(name) url += `&name_like=${name}`; 
+
+    if(ignoreTags.length) {
+      for(let tagId of ignoreTags){
+        url += `&id_ne=${tagId}`
+      }
+    }
+
     const data = await singleton.getData(url);
     return data;
   }

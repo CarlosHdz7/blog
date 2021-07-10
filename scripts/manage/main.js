@@ -10,6 +10,7 @@ import Utilities from '../utilities.js';
 
 const helpers = new Helpers();
 const utilities = new Utilities();
+let selectedTags = [];
 
 //[FUNCTIONS]
 const addPost = async () => {
@@ -93,6 +94,41 @@ const loadPosts = async (title = '') => {
     });
 
     blogsTableBody.appendChild(trHtml);
+  }
+};
+
+const selectTag = (id) => {
+  inputSearchTags.value = "";
+  selectedTags.push(id);
+  closeResultContainer();
+}
+
+const closeResultContainer = () => {
+  containerResults.style.display = 'none';
+};
+
+const showResultContainer = () => {
+  containerResults.style.display = 'block';
+};
+
+const loadTags = async (name = '') =>{
+
+  const tags = await helpers.getTags({name : name, ignoreTags: selectedTags});
+
+  while(containerResults.firstChild) containerResults.removeChild(containerResults.firstChild);
+
+  if(tags.length){
+    for (let tag of tags) {
+      const itemHtml = new HtmlFactory('itemResultTag', {
+        'id': tag.id,
+        'name': tag.name,
+        'events':{
+          'select': selectTag,
+        }
+      });
+      containerResults.appendChild(itemHtml);
+    }
+    showResultContainer();
   }
 };
 
@@ -196,6 +232,15 @@ closeSpan.addEventListener('click', () => {
 
 inputSearch.addEventListener('keyup', debounce(() => {
   loadPosts(inputSearch.value);
+}, 500));
+
+inputSearchTags.addEventListener('keyup', debounce(() => {
+  const text = inputSearchTags.value;
+  if(text){
+    loadTags(text);
+  }else{
+    closeResultContainer();
+  }
 }, 500));
 
 window.addEventListener('click', (event) => {

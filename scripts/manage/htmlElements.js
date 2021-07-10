@@ -15,4 +15,6 @@ const buttonCancel = document.createElement('buttonCancel');
 const modalDelete = document.getElementById('modalDelete');
 const spanIdPost = document.getElementById('spanIdPost');
 const inputSearch = document.getElementById('inputSearch');
+const inputSearchTags = document.getElementById('inputSearchTags');
 const closeSpan = document.getElementById('closeSpan');
+const containerResults = document.getElementById('containerResults');

@@ -176,6 +176,11 @@ buttonShowForm.addEventListener('click', () => {
   toggleContainers();
 });
 
+buttonBackForm.addEventListener('click', () => {
+  resetForm();
+  toggleContainers();
+});
+
 buttonDelete.addEventListener('click', async (event) => {
   await deletePost(event.target.dataset.idPost);
   closeDeleteModal();

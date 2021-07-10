@@ -1,6 +1,10 @@
 @import url("../utilities.css");
 @import url("../shared.css");
 
+*{
+  border:1px solid red;
+}
+
 .posts-container,
 .form-container {
   background-color: var(--white);
@@ -12,7 +16,6 @@
 
 .title {
   margin: 0px;
-  margin-bottom: 10px;
 }
 
 .button-edit,.button-delete{

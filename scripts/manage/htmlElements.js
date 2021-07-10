@@ -1,5 +1,6 @@
 const blogsTableBody = document.createElement('blogsTableBody');
 const buttonShowForm = document.createElement('buttonShowForm');
+const buttonBackForm = document.createElement('buttonBackForm');
 const postsContainer = document.createElement('postsContainer');
 const formContainer = document.createElement('formContainer');
 const formTitle = document.createElement('formTitle');

@@ -16,38 +16,41 @@
   
   <div class="container">
     <div class="posts-container" id="postsContainer">
-      <h4 class="title">Blog's list</h1>
-        <div class="mb-2 d-flex justify-content-end">
-          <button type="button" class="btn btn-aqua" id="buttonShowForm">Add Post</button>
-        </div>
-        <div>
-          <input type="text" placeholder="Search by title" id="inputSearch" class="input-search">
-        </div>
-        <table class="table">
-          <thead>
-            <th>Id</th>
-            <th>Title</th>
-            <th>Author</th>
-            <th>Date</th>
-            <th>Options</th>
-          </thead>
-          <tbody id="blogsTableBody">
-            <!-- <tr>
-              <td>1</td>
-              <td>Alfreds Futterkiste asdfd sfas fda fds fdasdfasdfafsdasfas as</td>
-              <td>Maria Anders</td>
-              <td>Germany</td>
-              <td>
-                <button type="button" class="button-edit"></button>
-                <button type="button" class="button-delete"></button>
-              </td>
-            </tr> -->
-          </tbody>
-        </table>
+      <div class="mb-2 d-flex justify-content-between align-items-center">
+        <h4 class="title">Blog's list</h1>
+        <button type="button" class="btn btn-aqua" id="buttonShowForm">Add Post</button>
+      </div>
+      <div>
+        <input type="text" placeholder="Search by title" id="inputSearch" class="input-search">
+      </div>
+      <table class="table">
+        <thead>
+          <th>Id</th>
+          <th>Title</th>
+          <th>Author</th>
+          <th>Date</th>
+          <th>Options</th>
+        </thead>
+        <tbody id="blogsTableBody">
+          <!-- <tr>
+            <td>1</td>
+            <td>Alfreds Futterkiste asdfd sfas fda fds fdasdfasdfafsdasfas as</td>
+            <td>Maria Anders</td>
+            <td>Germany</td>
+            <td>
+              <button type="button" class="button-edit"></button>
+              <button type="button" class="button-delete"></button>
+            </td>
+          </tr> -->
+        </tbody>
+      </table>
     </div>
 
     <form class="form-container d-none" id="formContainer">
-      <h4 class="title" id="formTitle">Add Post</h4>
+      <div class="mb-2 d-flex justify-content-between align-items-center">
+        <h4 class="title" id="formTitle">Add Post</h4>
+        <button type="button" class="btn" id="buttonBackForm">Back</button>
+      </div>
       <input type="hidden" id="textIdPost">
       <p>Title</p>
       <input type="text" class="input" id="textTitle">

@@ -64,17 +64,20 @@ const loadPosts = async (title = '') => {
   let data = {order:'desc', sort:'createDate'};
   if(title) data.title = title;
 
+  const authors = await getAuthors();
   const posts = await helpers.getPosts(data);
-  console.log(posts);
 
   while(blogsTableBody.firstChild) blogsTableBody.removeChild(blogsTableBody.firstChild);
 
   for (let post of posts) {
+
+    const author = authors.find( a => a.id === post.author);
+
     const trHtml = new HtmlFactory('tr', {
       'id': post.id,
       'title': post.title,
       'date': post.createDate,
-      'author':  post.author,
+      'author':  `${author.name} ${author.lastName}`,
       'events':{
         'delete': showDeleteModal,
         'edit': loadPost
@@ -83,7 +86,12 @@ const loadPosts = async (title = '') => {
 
     blogsTableBody.appendChild(trHtml);
   }
-}
+};
+
+const getAuthors = async () => {
+  const authors = await helpers.getAuthors();
+  return authors;
+};
 
 const loadHtml = async () => {
   const navbar = await loadNavbar();
@@ -187,3 +195,4 @@ window.addEventListener('click', (event) => {
 loadHtml();
 loadPosts();
 resetForm();
+getAuthors();

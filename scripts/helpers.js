@@ -25,6 +25,12 @@ class Helpers{
     return data;
   }
 
+  async getAuthors (){
+    let url = `/authors`;
+    const data = await singleton.getData(url);
+    return data;
+  }
+
   async getAuthors ({id} = {}){
     let url = `/authors?`;
     if(id) url = `/authors/${id}`;

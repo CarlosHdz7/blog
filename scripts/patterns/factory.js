@@ -176,6 +176,27 @@ class Tr{
     return tr;
   }
 }
+
+class TrNoResults{
+  constructor(props){
+    this.colSpan = props.colSpan;
+
+    return this.create();
+  }
+
+  create(){
+    const tr = document.createElement('tr');
+    const td = document.createElement('td');
+    const txtTd = document.createTextNode('No results found.');
+    td.setAttribute('colSpan', this.colSpan);
+    td.style.textAlign = 'center';
+
+    td.appendChild(txtTd);
+    tr.appendChild(td);
+
+    return tr;
+  }
+}
 class HtmlFactory {
   constructor(type, props) {
     if(type === "post")
@@ -188,6 +209,8 @@ class HtmlFactory {
       return new Comment(props);
     if(type === "tr")
       return new Tr(props);
+    if(type === "trNoResults")
+      return new TrNoResults(props);
   }
 };
 

@@ -69,19 +69,27 @@ const loadPosts = async (title = '') => {
 
   while(blogsTableBody.firstChild) blogsTableBody.removeChild(blogsTableBody.firstChild);
 
-  for (let post of posts) {
-
-    const author = authors.find( a => a.id === post.author);
-
-    const trHtml = new HtmlFactory('tr', {
-      'id': post.id,
-      'title': post.title,
-      'date': post.createDate,
-      'author':  `${author.name} ${author.lastName}`,
-      'events':{
-        'delete': showDeleteModal,
-        'edit': loadPost
-      }
+  if(posts.length){
+    for (let post of posts) {
+  
+      const author = authors.find( a => a.id === post.author);
+  
+      const trHtml = new HtmlFactory('tr', {
+        'id': post.id,
+        'title': post.title,
+        'date': post.createDate,
+        'author':  `${author.name} ${author.lastName}`,
+        'events':{
+          'delete': showDeleteModal,
+          'edit': loadPost
+        }
+      });
+  
+      blogsTableBody.appendChild(trHtml);
+    }
+  }else{
+    const trHtml = new HtmlFactory('trNoResults', {
+      'colSpan': 5,
     });
 
     blogsTableBody.appendChild(trHtml);

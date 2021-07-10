@@ -24,7 +24,7 @@ class Helpers{
 
     if(name) url += `&name_like=${name}`; 
 
-    if(ignoreTags.length) {
+    if(ignoreTags && ignoreTags.length) {
       for(let tagId of ignoreTags){
         url += `&id_ne=${tagId}`
       }

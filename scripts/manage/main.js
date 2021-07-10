@@ -52,7 +52,6 @@ const loadPost = async (id) => {
     toggleEventsSaveButton('edit');
 
     const post = await helpers.getPosts({id: id});
-    console.log(post);
     await displayInformation(post);
     toggleContainers();
   } catch (error) {
@@ -101,6 +100,7 @@ const selectTag = (id) => {
   inputSearchTags.value = "";
   selectedTags.push(id);
   closeResultContainer();
+  refreshTags();
 }
 
 const closeResultContainer = () => {
@@ -156,6 +156,8 @@ const displayInformation = async (post) => {
   textSubTitle.value = post.subTitle;
   textDescription.textContent = post.body;
   textUrlImage.value = post.image;
+  selectedTags = post.tags;
+  refreshTags();
 };
 
 const toggleEventsSaveButton = (action) => { 
@@ -182,7 +184,7 @@ const buildDataPost = (action) => {
     'createDate': utilities.formatDate(new Date(Date.now()),'yyyy/mm/dd'),
     'likes':0,
     'author':1,
-    'tags': []
+    'tags': selectedTags
   }
 
   if(action === 'edit') { data.id = textIdPost.value; };
@@ -193,6 +195,8 @@ const buildDataPost = (action) => {
 
 const resetForm = () => {
   textDescription.textContent = '';
+  selectedTags = [];
+  clearTagsContainer();
   formContainer.reset();
 }
 
@@ -204,6 +208,25 @@ const showDeleteModal = (id) => {
 
 const closeDeleteModal = () => {
   modalDelete.style.display = 'none';
+};
+
+const clearTagsContainer = async () => {
+  while(tagsContainer.firstChild) tagsContainer.removeChild(tagsContainer.firstChild);
+};
+
+const refreshTags = async () => {
+  const tags = await helpers.getTags();
+
+  await clearTagsContainer();
+  
+  for (const selectedTag of selectedTags) {
+    const tag = tags.find( t => t.id === selectedTag);
+
+    const tagHtml = new HtmlFactory('tag', {
+      'name': tag.name,
+    });
+    tagsContainer.appendChild(tagHtml);
+  }
 };
 
 //[EVENTS]
@@ -254,3 +277,6 @@ loadHtml();
 loadPosts();
 resetForm();
 getAuthors();
+
+
+refreshTags();

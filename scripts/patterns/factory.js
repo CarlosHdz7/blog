@@ -88,6 +88,7 @@ class Tags {
   create(){
     const span = document.createElement('span');
     const text = document.createTextNode(this.text);
+    span.classList.add('tag');
     span.appendChild(text);
 
     return span;

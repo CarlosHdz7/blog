@@ -29,6 +29,8 @@ const loadPost = async () => {
   try{
     const urlParams = await getQueryParams();
     idPost = urlParams.get('id');
+
+    if(!idPost) throw new Error();
   
     const obj = await helpers.getPosts({id: idPost});
     const author = await helpers.getAuthors({id: obj.author});

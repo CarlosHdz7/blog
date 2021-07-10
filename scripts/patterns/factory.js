@@ -82,16 +82,31 @@ class Post {
 class Tags {
   constructor(props){
     this.text = props.name;
+    this.id = props.id;
+    this.events = props.events;
     return this.create();
   }
 
   create(){
+    const div =document.createElement('div');
     const span = document.createElement('span');
     const text = document.createTextNode(this.text);
-    span.classList.add('tag');
+    const span2 = document.createElement('span');
+    const text2 = document.createTextNode('x');
     span.appendChild(text);
+    span2.appendChild(text2);
 
-    return span;
+    if(this.events.hasOwnProperty('remove')){
+      span2.addEventListener('click', () => {
+        this.events.remove(this.id);
+      })
+    }
+    
+    div.classList.add('tag');
+    span2.classList.add('close-tag');
+    div.appendChild(span)
+    div.appendChild(span2)
+    return div;
   }
 }
 class Comment{

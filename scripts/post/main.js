@@ -33,12 +33,13 @@ const loadPost = async () => {
     if(!idPost) throw new Error();
   
     const obj = await helpers.getPosts({id: idPost});
-    const author = await helpers.getAuthors({id: obj.author});
+    let  author = await helpers.getAuthors({id: obj.author});
   
-    displayPostInformation(obj, author);
-    loadComments(idPost);
+    displayPostInformation(obj, author.name);
+    loadComments();
 
   }catch(error){
+    console.log(error)
     window.location.href = './404.html';
   }
 };
@@ -49,7 +50,7 @@ const displayPostInformation = (obj, author) => {
   textSubTitle.textContent = obj.subTitle;
   textDescription.textContent = obj.body;
   textDate.textContent = obj.createDate;
-  textAuthor.textContent = author.name;
+  textAuthor.textContent = author;
   imgPost.src = obj.image;
   textLikes.textContent = obj.likes;
 };

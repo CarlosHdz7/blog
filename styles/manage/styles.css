@@ -115,3 +115,9 @@
   background-color: var(--blue);
 }
 
+.close-tag{
+  margin-left: 5px;
+  font-weight: 700;
+  padding: 3px;
+  cursor: pointer;
+}

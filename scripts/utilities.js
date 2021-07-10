@@ -9,6 +9,12 @@ class Utilities{
 
     return format.replace(/dd|mm|yyyy/gi, matched => map[matched])
   }
+
+  arrayRemove(array, value) { 
+    return array.filter(function(item){ 
+        return item != value; 
+    });
+  }
 }
 
 export default Utilities;

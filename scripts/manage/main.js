@@ -72,13 +72,14 @@ const loadPosts = async (title = '') => {
   if(posts.length){
     for (let post of posts) {
   
-      const author = authors.find( a => a.id === post.author);
+      let author = authors.find( a => a.id === post.author);
+      author = (author) ? `${author.name} ${author.lastName}` : 'Unknown';
   
       const trHtml = new HtmlFactory('tr', {
         'id': post.id,
         'title': post.title,
         'date': post.createDate,
-        'author':  `${author.name} ${author.lastName}`,
+        'author':  author,
         'events':{
           'delete': showDeleteModal,
           'edit': loadPost
@@ -102,6 +103,11 @@ const selectTag = (id) => {
   closeResultContainer();
   refreshTags();
 }
+
+const removeTag = (id) => {
+  selectedTags = utilities.arrayRemove(selectedTags, id);
+  refreshTags();
+};
 
 const closeResultContainer = () => {
   containerResults.style.display = 'none';
@@ -224,6 +230,10 @@ const refreshTags = async () => {
 
     const tagHtml = new HtmlFactory('tag', {
       'name': tag.name,
+      'id': tag.id,
+      'events':{
+        'remove': removeTag
+      }
     });
     tagsContainer.appendChild(tagHtml);
   }

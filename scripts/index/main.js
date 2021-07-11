@@ -3,17 +3,20 @@
 import Helpers  from '../helpers.js';
 import HtmlFactory from '../patterns/factory.js';
 import { loadNavbar, loadFooter } from '../sharedScripts.js';
+import { debounce } from '../algorithms.js';
 import '../sharedHtmlElements.js';
 import './htmlElements.js';
 
 const helpers = new Helpers();
 
 //[FUNCTIONS]
-const getPost = async () => {
+const getPost = async (title = '') => {
   try {
-    const posts = await helpers.getPosts({order:'desc', sort:'createDate'});
+    let data = {order:'desc', sort:'createDate'};
+    if(title) data.title = title;
+    const posts = await helpers.getPosts(data);
 
-    while(normalPostContainer.firstChild) normalPostContainer.removeChild(normalPostContainer.firstChild);
+    await clearPost();
 
     if(posts.length){
       for (let post of posts) {
@@ -28,13 +31,17 @@ const getPost = async () => {
         normalPostContainer.appendChild(postHtml);
       }
     }else{
-      window.location.href = './404.html';
+      // window.location.href = './404.html';
     }
   } catch (error) {
     window.location.href = './500.html';
   }
 
 }
+
+const clearPost = async () => {
+  while(normalPostContainer.firstChild) normalPostContainer.removeChild(normalPostContainer.firstChild);
+};
 
 const getTags = async () => {
   const tags = await helpers.getTags();
@@ -71,6 +78,10 @@ const loadHtml = async () => {
   navbarContainer.innerHTML = navbar;
   footerContainer.innerHTML = footer;
 };
+
+inputSearch.addEventListener('keyup', debounce(() => {
+  getPost(inputSearch.value);
+}, 500));
 
 //[TRIGGERS]
 loadHtml();

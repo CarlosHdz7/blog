@@ -157,3 +157,29 @@ footer {
   padding: 5px;
   border-radius: var(--radius);
 }
+
+
+.tag{
+  padding: 3px 8px;
+  border-radius: 12px;
+  margin: 3px;
+  font-size: 12px;
+  color: var(--white);
+  background-color: var(--purple);
+}
+
+.tag-1{
+  background-color: var(--red);
+}
+
+.tag-2{
+  background-color: var(--green);
+}
+
+.tag-3{
+  background-color: var(--yellow);
+}
+
+.tag-4{
+  background-color: var(--blue);
+}

@@ -11,14 +11,6 @@ const helpers = new Helpers();
 
 
 //[FUNCTIONS]
-const loadHtml = async () => {
-  const navbar = await loadNavbar();
-  const footer = await loadFooter();
-
-  navbarContainer.innerHTML = navbar;
-  footerContainer.innerHTML = footer;
-};
-
 const getQueryParams = async () => {
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
@@ -44,7 +36,6 @@ const loadPost = async () => {
 };
 
 const displayPostInformation = (obj, author) => {
-
   textTitle.textContent = obj.title;
   textSubTitle.textContent = obj.subTitle;
   textDescription.textContent = obj.body;
@@ -100,6 +91,14 @@ const updateLikes = async () => {
     console.log(error.message);
   }
 }
+
+const loadHtml = async () => {
+  const navbar = await loadNavbar();
+  const footer = await loadFooter();
+
+  navbarContainer.innerHTML = navbar;
+  footerContainer.innerHTML = footer;
+};
 
 //[LISTENERS]
 buttonComment.addEventListener('click', postComment);

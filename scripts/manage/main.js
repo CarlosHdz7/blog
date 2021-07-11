@@ -16,7 +16,6 @@ let selectedTags = [];
 const addPost = async () => {
   try{
     const data = buildDataPost('add');
-
     await helpers.addPost(data);
     await loadPosts();
     toggleContainers();
@@ -50,7 +49,6 @@ const editPost = async () => {
 const loadPost = async (id) => {
   try {
     toggleEventsSaveButton('edit');
-
     const post = await helpers.getPosts({id: id});
     await displayInformation(post);
     toggleContainers();
@@ -92,7 +90,6 @@ const loadPosts = async (title = '') => {
     const trHtml = new HtmlFactory('trNoResults', {
       'colSpan': 5,
     });
-
     blogsTableBody.appendChild(trHtml);
   }
 };
@@ -286,6 +283,3 @@ loadHtml();
 loadPosts();
 resetForm();
 getAuthors();
-
-
-refreshTags();

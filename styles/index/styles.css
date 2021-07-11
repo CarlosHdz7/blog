@@ -128,6 +128,9 @@ section {
 .input-search--index{
   background-color: var(--white);
   width: 100%;
+  border:none;
+  box-shadow: var(--shadow);
+
 }
 
 .like {

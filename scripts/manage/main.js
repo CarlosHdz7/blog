@@ -58,40 +58,52 @@ const loadPost = async (id) => {
 };
 
 const loadPosts = async (title = '') => {
-
-  let data = {order:'desc', sort:'createDate'};
-  if(title) data.title = title;
-
-  const authors = await getAuthors();
-  const posts = await helpers.getPosts(data);
-
-  while(blogsTableBody.firstChild) blogsTableBody.removeChild(blogsTableBody.firstChild);
-
-  if(posts.length){
-    for (let post of posts) {
+  try {
+    let data = {order:'desc', sort:'createDate'};
+    if(title) data.title = title;
   
-      let author = authors.find( a => a.id === post.author);
-      author = (author) ? `${author.name} ${author.lastName}` : 'Unknown';
+    const authors = await getAuthors();
+    const posts = await helpers.getPosts(data);
   
-      const trHtml = new HtmlFactory('tr', {
-        'id': post.id,
-        'title': post.title,
-        'date': post.createDate,
-        'author':  author,
-        'events':{
-          'delete': showDeleteModal,
-          'edit': loadPost
-        }
-      });
+    await clearBodyTable(blogsTableBody);
   
-      blogsTableBody.appendChild(trHtml);
+    if(posts.length){
+      for (let post of posts) {
+    
+        let author = authors.find( a => a.id === post.author);
+        author = (author) ? `${author.name} ${author.lastName}` : 'Unknown';
+    
+        const trHtml = new HtmlFactory('tr', {
+          'id': post.id,
+          'title': post.title,
+          'date': post.createDate,
+          'author':  author,
+          'events':{
+            'delete': showDeleteModal,
+            'edit': loadPost
+          }
+        });
+    
+        blogsTableBody.appendChild(trHtml);
+      }
+    }else{
+      setEmptyTable(blogsTableBody,5);
     }
-  }else{
-    const trHtml = new HtmlFactory('trNoResults', {
-      'colSpan': 5,
-    });
-    blogsTableBody.appendChild(trHtml);
+  } catch (error) {
+    window.location.href = './500.html';
   }
+};
+
+const setEmptyTable  = async (bodyTable, colSpan) => {
+  await clearBodyTable(bodyTable);
+  const trHtml = new HtmlFactory('trNoResults', {
+    'colSpan': colSpan,
+  });
+  bodyTable.appendChild(trHtml);
+};
+
+const clearBodyTable = async (bodyTable) => {
+  while(bodyTable.firstChild) bodyTable.removeChild(bodyTable.firstChild);
 };
 
 const selectTag = (id) => {
@@ -99,7 +111,7 @@ const selectTag = (id) => {
   selectedTags.push(id);
   closeResultContainer();
   refreshTags();
-}
+};
 
 const removeTag = (id) => {
   selectedTags = utilities.arrayRemove(selectedTags, id);

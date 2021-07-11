@@ -29,10 +29,7 @@ const getPost = async () => {
     }else{
       window.location.href = './404.html';
     }
-  
-
   } catch (error) {
-    console.log('error 500')
     window.location.href = './500.html';
   }
 

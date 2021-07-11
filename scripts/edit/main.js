@@ -6,7 +6,7 @@ import Helpers  from '../helpers.js';
 import HtmlFactory from '../patterns/factory.js';
 import { loadNavbar, loadFooter } from '../sharedScripts.js';
 import { debounce } from '../algorithms.js';
-import { validateForm } from './validateForm.js';
+import { validateForm, cleanErrorsMessages } from './validateForm.js';
 import Utilities from '../utilities.js';
 
 const helpers = new Helpers();
@@ -265,7 +265,8 @@ buttonShowForm.addEventListener('click', () => {
   toggleContainers();
 });
 
-buttonBackForm.addEventListener('click', () => {
+buttonBackForm.addEventListener('click', async () => {
+  await cleanErrorsMessages();
   resetForm();
   toggleContainers();
 });

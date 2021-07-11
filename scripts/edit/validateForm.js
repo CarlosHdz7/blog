@@ -68,10 +68,9 @@ const validateForm = () => {
 
 };
 
-const handleErrors = (errors) =>{
+const handleErrors = async (errors) =>{
 
-  const messages = Array.from(document.getElementsByClassName('message'));
-  messages.forEach( message => message.textContent = '');
+  await cleanErrorsMessages();
 
   errors.forEach( error => {
     const element = document.getElementById(`${error.field}_message`);
@@ -79,6 +78,12 @@ const handleErrors = (errors) =>{
   });
 };
 
+const cleanErrorsMessages = async () => {
+  const messages = Array.from(document.getElementsByClassName('message'));
+  messages.forEach( message => message.textContent = '');
+};
+
 export {
-  validateForm
+  validateForm,
+  cleanErrorsMessages
 }

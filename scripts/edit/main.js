@@ -174,7 +174,7 @@ const displayInformation = async (post) => {
 const toggleEventsSaveButton = (action) => { 
   if(action === 'add'){
     resetForm();
-    formTitle.textContent = 'Add post';
+    formTitle.textContent = 'Create new post';
     buttonSave.removeEventListener('click', editPost);
     buttonSave.addEventListener('click', addPost);
   }

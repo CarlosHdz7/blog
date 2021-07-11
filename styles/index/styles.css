@@ -74,6 +74,7 @@ section {
   font-weight: 700;
   text-decoration: none;
   color: var(--black1);
+  height: 57px;
 }
 
 .preview-post__subtitle,
@@ -126,4 +127,14 @@ section {
 .input-search--index{
   background-color: var(--white);
   width: 100%;
+}
+
+.like {
+  width: 20px;
+  height: 20px;
+  background-image: url("../../images/heart.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-origin: content-box;
 }

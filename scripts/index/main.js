@@ -22,6 +22,7 @@ const getPost = async () => {
           'url': post.image, 
           'description': post.subTitle,
           'date': post.createDate,
+          'likes': post.likes,
           'id': post.id
         });
         normalPostContainer.appendChild(postHtml);

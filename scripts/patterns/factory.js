@@ -38,6 +38,7 @@ class Post {
     this.url = props.url;
     this.size = (props.size) ? props.size : 'square';
     this.id = props.id;
+    this.likes = props.likes;
     return this.create();
   }
 
@@ -45,15 +46,21 @@ class Post {
     const div1 = document.createElement('div');
     const div2 = document.createElement('div');
     const div3 = document.createElement('div');
+    const div4 = document.createElement('div');
+    const div5 = document.createElement('div');
+    const div6 = document.createElement('div');
+
     const img = document.createElement('img');
     const a = document.createElement('a');
     const small = document.createElement('small');
     const small2 = document.createElement('small');
+    const small3 = document.createElement('small');
 
     a.textContent = this.title;
     a.href = `post.html?id=${this.id}`;
     small.textContent = this.description;
     small2.textContent = this.date;
+    small3.textContent = this.likes;
     img.src = this.url;
 
     a.classList.add('preview-post__title');
@@ -61,6 +68,10 @@ class Post {
     small2.classList.add('preview-post__date');
     div2.classList.add('preview-post__img');
     div3.classList.add('preview-post__description');
+    div4.classList.add('d-flex','justify-content-between');
+    div5.classList.add('d-flex');
+    div6.classList.add('like','mr-1');
+
     (this.size === 'square')
       ? div2.classList.add('img-square')
       : div2.classList.add('img-rectangle');
@@ -72,7 +83,12 @@ class Post {
     div2.appendChild(img);
     div3.appendChild(a);
     div3.appendChild(small);
-    div3.appendChild(small2);
+
+    div5.appendChild(div6);
+    div5.appendChild(small3);
+    div4.appendChild(div5);
+    div4.appendChild(small2);
+    div3.appendChild(div4);
     div1.appendChild(div2);
     div1.appendChild(div3);
 

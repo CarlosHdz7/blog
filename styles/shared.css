@@ -183,3 +183,15 @@ footer {
 .tag-4{
   background-color: var(--blue);
 }
+
+.input-search{
+  padding: 10px;
+  border-radius: var(--radius);
+  border:2px solid var(--gray2);
+  width: 300px;
+  font-family: 'Montserrat';
+  margin-bottom: 10px;
+  box-sizing: border-box;
+  background-color: var(--background);
+
+}

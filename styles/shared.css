@@ -24,6 +24,7 @@
 body {
   position: relative;
   padding: 0px;
+  padding-top: 40px;
   margin: 0px;
   background: var(--background);
   font-family: "Montserrat", sans-serif;
@@ -38,6 +39,8 @@ nav {
   box-shadow: var(--shadow);
   padding: 0px 30px;
   box-sizing: border-box;
+  position: fixed;
+  top:0px;
 }
 
 .nav-logo {

@@ -97,7 +97,7 @@
   font-family: Arial, Helvetica, sans-serif;
   border-collapse: collapse;
   width: 100%;
-  border: 1px solid var(--gray2);
+  border: 2px solid var(--gray2);
   border-radius: 8px;
 }
 
@@ -134,6 +134,7 @@ thead th:last-child{
   font-family: "Montserrat", sans-serif;
   font-size: 14px;
   border:2px solid var(--gray2) ;
+  background-color: var(--background);
 }
 
 .modal {

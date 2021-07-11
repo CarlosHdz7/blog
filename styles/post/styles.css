@@ -15,13 +15,6 @@
   box-shadow: var(--shadow);
 }
 
-.arrow-container {
-  padding: 15px;
-  margin: 20px 0px;
-  display: flex;
-  align-items: center;
-}
-
 .text-comment {
   box-sizing: border-box;
 }

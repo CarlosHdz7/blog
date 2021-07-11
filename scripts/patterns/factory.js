@@ -20,7 +20,7 @@ class SmallPost {
 
     div1.classList.add('preview-small-post');
     div2.classList.add('small-post__img');
-    div3.classList.add('small-post__title');
+    a.classList.add('small-post__title');
 
     div2.appendChild(img);
     div3.appendChild(a);
@@ -92,7 +92,7 @@ class Tags {
     const span = document.createElement('span');
     const text = document.createTextNode(this.text);
     const span2 = document.createElement('span');
-    const text2 = document.createTextNode('x');
+    const text2 = document.createTextNode('✖');
     span.appendChild(text);
     span2.appendChild(text2);
 
@@ -120,7 +120,7 @@ class Comment{
     const p = document.createElement('p');
     const span1 = document.createElement('span');
     const span2 = document.createElement('span2');
-    const text1 = document.createTextNode('Anonymous');
+    const text1 = document.createTextNode('Anonymous:');
     const text2 = document.createTextNode(this.comment);
 
 

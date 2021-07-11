@@ -3,6 +3,8 @@
   --white: #fff;
   --black1: #2b2b2b;
   --gray: #bdc3c7;
+  --gray2: #ced6e0;
+  --gray3:#747d8c;
   --red: #eb4d4b;
   --yellow: #f9ca24;
   --green:#2DBE88;
@@ -10,6 +12,7 @@
   --aqua2:#17BDCB;
   --blue:#1A65F3;
   --orange:#E4A108;
+  --purple:#574FEA;
   --radius: 3px;
   --shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 }
@@ -48,9 +51,14 @@ nav {
   display: flex;
   justify-content: center;
   align-items: center;
-  color:var(--green);
-  font-weight: 700;
 }
+
+.nav-logo__text{
+  color:var(--purple);
+  font-weight: 700;
+  text-decoration: none;
+}
+
 
 .nav-options {
   box-sizing: border-box;
@@ -68,6 +76,12 @@ nav {
   display: inline-block;
   color: var(--black1);
   font-weight: 700;
+}
+
+.item__button:hover{
+  background-color: var(--purple);
+  color: var(--white);
+  transition: background 0.3s ease-in;
 }
 
 footer {
@@ -109,6 +123,26 @@ footer {
 
 .btn-aqua{
   background-color: var(--aqua);
+  color:var(--white);
+}
+
+.btn-black{
+  background-color: var(--black1);
+  color:var(--white);
+}
+
+.btn-gray{
+  background-color: var(--gray3);
+  color:var(--white);
+}
+
+.btn-green{
+  background-color: var(--green);
+  color:var(--white);
+}
+
+.btn-purple{
+  background-color: var(--purple);
   color:var(--white);
 }
 

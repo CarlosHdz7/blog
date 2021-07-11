@@ -47,7 +47,7 @@
 }
 
 .comment {
-  border: 1px solid gray;
+  border: 1px solid var(--gray2);
   padding: 2px 20px;
   border-radius: var(--radius);
   margin-bottom: 10px;
@@ -61,4 +61,9 @@
 .comment__user {
   font-weight: 700;
   margin-right: 4px;
+}
+
+.img-details{
+  width: 100%;
+  max-height: 500px;
 }

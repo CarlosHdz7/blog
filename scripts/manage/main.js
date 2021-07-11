@@ -188,7 +188,6 @@ const buildDataPost = (action) => {
     'image':textUrlImage.value,
     'body':textDescription.value,
     'createDate': utilities.formatDate(new Date(Date.now()),'yyyy/mm/dd'),
-    'likes':0,
     'author':1,
     'tags': selectedTags
   }

@@ -65,7 +65,7 @@ const loadPosts = async (title = '') => {
     const authors = await getAuthors();
     const posts = await helpers.getPosts(data);
   
-    await clearBodyTable(blogsTableBody);
+    await utilities.clearBodyTable(blogsTableBody);
   
     if(posts.length){
       for (let post of posts) {
@@ -95,15 +95,11 @@ const loadPosts = async (title = '') => {
 };
 
 const setEmptyTable  = async (bodyTable, colSpan) => {
-  await clearBodyTable(bodyTable);
+  await utilities.clearBodyTable(bodyTable);
   const trHtml = new HtmlFactory('trNoResults', {
     'colSpan': colSpan,
   });
   bodyTable.appendChild(trHtml);
-};
-
-const clearBodyTable = async (bodyTable) => {
-  while(bodyTable.firstChild) bodyTable.removeChild(bodyTable.firstChild);
 };
 
 const selectTag = (id) => {

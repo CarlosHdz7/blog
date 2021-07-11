@@ -15,6 +15,10 @@ class Utilities{
         return item != value; 
     });
   }
+
+  async clearBodyTable (bodyTable) {
+    while(bodyTable.firstChild) bodyTable.removeChild(bodyTable.firstChild);
+  };
 }
 
 export default Utilities;

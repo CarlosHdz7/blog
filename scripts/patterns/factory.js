@@ -7,14 +7,14 @@ class SmallPost {
   }
 
   create(){
-    const div1 = document.createElement('div');
+    const div1 = document.createElement('a');
     const div2 = document.createElement('div');
     const div3 = document.createElement('div');
     const img = document.createElement('img');
     const a = document.createElement('a');
 
     a.textContent = this.title;
-    a.href = `post.html?id=${this.id}`;
+    div1.href = `post.html?id=${this.id}`;
     img.src = this.url;
 
 
@@ -43,7 +43,7 @@ class Post {
   }
 
   create(){
-    const div1 = document.createElement('div');
+    const div1 = document.createElement('a');
     const div2 = document.createElement('div');
     const div3 = document.createElement('div');
     const div4 = document.createElement('div');
@@ -57,7 +57,7 @@ class Post {
     const small3 = document.createElement('small');
 
     a.textContent = this.title;
-    a.href = `post.html?id=${this.id}`;
+    div1.href = `post.html?id=${this.id}`;
     small.textContent = this.description;
     small2.textContent = this.date;
     small3.textContent = this.likes;

@@ -10,15 +10,20 @@ import './htmlElements.js';
 const helpers = new Helpers();
 
 //[FUNCTIONS]
-const getPost = async (title = '') => {
+const loadPosts = async (title = '') => {
+  await clearPost();
+  await setLoader(normalPostContainer);
+
   try {
     let data = {order:'desc', sort:'createDate'};
     if(title) data.title = title;
     const posts = await helpers.getPosts(data);
 
-    await clearPost();
+    console.log(posts);
 
     if(posts.length){
+      await clearPost();
+      
       for (let post of posts) {
         const postHtml = new HtmlFactory('post', {
           'title':post.title,
@@ -31,7 +36,8 @@ const getPost = async (title = '') => {
         normalPostContainer.appendChild(postHtml);
       }
     }else{
-      // window.location.href = './404.html';
+      await clearPost();
+      handleMessages(normalPostContainer);
     }
   } catch (error) {
     window.location.href = './500.html';
@@ -51,7 +57,7 @@ const getTags = async () => {
   console.log(tags);
 }
 
-const getLatestPost = async () => {
+const loadLatestPost = async () => {
   try {
     const latestPosts = await helpers.getPosts({order:'desc', sort:'createDate', limit:3});  
     if(latestPosts.length){
@@ -64,7 +70,7 @@ const getLatestPost = async () => {
         smallPostContainer.appendChild(smallPost);
       }
     }else{
-      window.location.href = './404.html';
+      handleMessages(smallPostContainer);
     }
   } catch (error) {
     window.location.href = './500.html';
@@ -79,12 +85,23 @@ const loadHtml = async () => {
   footerContainer.innerHTML = footer;
 };
 
+const handleMessages = (container) => {
+  const messageHtml = new HtmlFactory('notResults', {} );
+  container.appendChild(messageHtml);
+};
+
+const setLoader = (container) => {
+  const loaderHtml = new HtmlFactory('loader', {} );
+  container.appendChild(loaderHtml);
+};
+
+//[EVENTS]
 inputSearch.addEventListener('keyup', debounce(() => {
-  getPost(inputSearch.value);
+  loadPosts(inputSearch.value);
 }, 500));
 
 //[TRIGGERS]
 loadHtml();
-getPost();
+loadPosts();
 // getTags();
-getLatestPost();
+loadLatestPost();

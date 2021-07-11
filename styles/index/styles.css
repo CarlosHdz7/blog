@@ -145,3 +145,8 @@ section {
   background-size: cover;
   background-origin: content-box;
 }
+
+.not-results{
+  color: var(--purple);
+  font-weight: 700;
+}

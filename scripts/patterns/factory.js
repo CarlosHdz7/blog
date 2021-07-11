@@ -254,7 +254,6 @@ class ItemResultTag{
     return item;
   }
 }
-
 class ErrorMessage{
   constructor(props){
     this.message = props.message;
@@ -267,6 +266,32 @@ class ErrorMessage{
     p.textContent = this.message;
 
     return p;
+  }
+}
+
+class NotResults{
+  constructor(){
+    return this.create();
+  }
+
+  create(){
+    let p = document.createElement('p');
+    p.classList.add('not-results');
+    p.textContent = 'No result found :('
+
+    return p;
+  }
+}
+
+class Loader{
+  constructor(){
+    return this.create();
+  }
+
+  create(){
+    let div = document.createElement('div');
+    div.classList.add('loader');
+    return div;
   }
 }
 
@@ -288,6 +313,10 @@ class HtmlFactory {
       return new ItemResultTag(props);
     if(type === "errorMessage")
       return new ErrorMessage(props);
+    if(type === "notResults")
+      return new NotResults();
+    if(type === "loader")
+      return new Loader();
   }
 };
 

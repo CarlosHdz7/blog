@@ -27,6 +27,7 @@ class Utilities{
   async clearBodyTable (bodyTable) {
     while(bodyTable.firstChild) bodyTable.removeChild(bodyTable.firstChild);
   };
+  
 }
 
 export default Utilities;

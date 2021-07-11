@@ -13,7 +13,7 @@ const getPost = async () => {
 
   const posts = await helpers.getPosts({order:'desc', sort:'createDate'});
 
-  for (let i = 3; i < posts.length; i++) {
+  for (let i = 0; i < posts.length; i++) {
     const post = new HtmlFactory('post', {
       'title': posts[i].title,
       'url': posts[i].image, 
@@ -37,18 +37,18 @@ const getTags = async () => {
 
 const getLatestPost = async () => {  
   const latestPosts = await helpers.getPosts({order:'desc', sort:'createDate', limit:3});
-  const lastPost = latestPosts[0];
+  // const lastPost = latestPosts[0];
 
-  const post = new HtmlFactory('post', {
-    'title': lastPost.title, 
-    'url': lastPost.image,
-    'description': lastPost.subTitle,
-    'size':'rectangle',
-    'date': lastPost.createDate,
-    'id': lastPost.id 
-  });
+  // const post = new HtmlFactory('post', {
+  //   'title': lastPost.title, 
+  //   'url': lastPost.image,
+  //   'description': lastPost.subTitle,
+  //   'size':'rectangle',
+  //   'date': lastPost.createDate,
+  //   'id': lastPost.id 
+  // });
 
-  main.appendChild(post);
+  // main.appendChild(post);
   
   for(let post of latestPosts){
     const smallPost = new HtmlFactory('smallPost', {

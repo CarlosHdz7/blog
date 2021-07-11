@@ -15,13 +15,15 @@ let selectedTags = [];
 //[FUNCTIONS]
 const addPost = async () => {
   try{
+    utilities.removeErrorMessage(errorFormContainer);
     const data = buildDataPost('add');
     await helpers.addPost(data);
     await loadPosts();
     toggleContainers();
 
   }catch(error){
-    console.log(error.message);
+    const errorHtml = new HtmlFactory('errorMessage', {'message': 'Something when wrong wile add a post' } );
+    utilities.setErrorMessage(errorFormContainer,errorHtml);
   }
 };
 
@@ -36,13 +38,16 @@ const deletePost = async (id) => {
 
 const editPost = async () => {
   try{
+    utilities.removeErrorMessage(errorFormContainer);
+
     const data = buildDataPost('edit');
     await helpers.patchPost(data);
     await loadPosts();
     toggleContainers();
 
   }catch(error){
-    console.log(error.message);
+    const errorHtml = new HtmlFactory('errorMessage', {'message': 'Something when wrong wile edit a post' } );
+    utilities.setErrorMessage(errorFormContainer,errorHtml);
   }
 }
 

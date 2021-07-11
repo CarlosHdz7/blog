@@ -19,3 +19,4 @@ const inputSearchTags = document.getElementById('inputSearchTags');
 const closeSpan = document.getElementById('closeSpan');
 const containerResults = document.getElementById('containerResults');
 const tagsContainer = document.getElementById('tagsContainer');
+const errorFormContainer = document.getElementById('errorFormContainer');

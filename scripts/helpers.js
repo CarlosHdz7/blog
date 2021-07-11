@@ -69,12 +69,12 @@ class Helpers{
     let url = `/posts`;
     await singleton.postData(url, data);
   }
-
+  
   async updatePost (data){
     let url = `/posts/${data.id}`;
     await singleton.updateData(url, data);
   }
-
+  
   async patchPost (data){
     let url = `/posts/${data.id}`;
     await singleton.patchData(url, data);

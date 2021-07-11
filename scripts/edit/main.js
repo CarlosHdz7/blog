@@ -251,6 +251,7 @@ const refreshTags = async () => {
     const tagHtml = new HtmlFactory('tag', {
       'name': tag.name,
       'id': tag.id,
+      'cross':true,
       'events':{
         'remove': removeTag
       }

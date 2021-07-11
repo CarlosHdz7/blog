@@ -100,6 +100,7 @@ class Tags {
     this.text = props.name;
     this.id = props.id;
     this.events = props.events;
+    this.cross = props.cross;
     return this.create();
   }
 
@@ -110,9 +111,12 @@ class Tags {
     const span2 = document.createElement('span');
     const text2 = document.createTextNode('✖');
     span.appendChild(text);
-    span2.appendChild(text2);
+    
+    if(this.cross){
+      span2.appendChild(text2);
+    }
 
-    if(this.events.hasOwnProperty('remove')){
+    if(this.events && this.events.hasOwnProperty('remove')){
       span2.addEventListener('click', () => {
         this.events.remove(this.id);
       })

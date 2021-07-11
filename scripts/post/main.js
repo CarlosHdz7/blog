@@ -30,6 +30,7 @@ const loadPost = async () => {
     let  author = await helpers.getAuthors({id: obj.author});
   
     displayPostInformation(obj, author.name);
+    refreshTags(obj.tags);
     loadComments();
 
   }catch(error){
@@ -104,6 +105,20 @@ const loadHtml = async () => {
 
   navbarContainer.innerHTML = navbar;
   footerContainer.innerHTML = footer;
+};
+
+const refreshTags = async (tagsPost) => {
+  const tags = await helpers.getTags();
+  
+  for (const tagPost of tagsPost) {
+    const tag = tags.find( t => t.id === tagPost);
+
+    const tagHtml = new HtmlFactory('tag', {
+      'name': tag.name,
+      'id': tag.id
+    });
+    tagsContainer.appendChild(tagHtml);
+  }
 };
 
 //[LISTENERS]

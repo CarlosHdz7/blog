@@ -11,3 +11,4 @@ const buttonComment = document.getElementById('buttonComment');
 const buttonLike = document.getElementById('buttonLike');
 const errorCommentContainer  = document.getElementById('errorCommentContainer');
 const errorLikesContainer = document.getElementById('errorLikesContainer');
+const tagsContainer= document.getElementById('tagsContainer');

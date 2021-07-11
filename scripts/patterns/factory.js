@@ -268,7 +268,6 @@ class ErrorMessage{
     return p;
   }
 }
-
 class NotResults{
   constructor(){
     return this.create();
@@ -282,7 +281,6 @@ class NotResults{
     return p;
   }
 }
-
 class Loader{
   constructor(){
     return this.create();

@@ -75,7 +75,7 @@ const loadPost = async (id) => {
 
 const loadPosts = async (title = '') => {
   try {
-    let data = {order:'desc', sort:'createDate'};
+    let data = {order:'desc', sort:'id'};
     if(title) data.title = title;
   
     const authors = await getAuthors();
@@ -208,13 +208,15 @@ const buildDataPost = (action) => {
     'subTitle':textSubTitle.value,
     'image':textUrlImage.value,
     'body':textDescription.value,
-    'createDate': utilities.formatDate(new Date(Date.now()),'yyyy/mm/dd'),
     'author':1,
     'tags': selectedTags
   }
 
   if(action === 'edit') { data.id = textIdPost.value; };
-  if(action === 'add') { data.createDate = utilities.formatDate(new Date(Date.now()),'yyyy/mm/dd'); };
+  if(action === 'add') { 
+    data.likes = 0; 
+    data.createDate = utilities.formatDate(new Date(Date.now()),'yyyy/mm/dd'); 
+  };
 
   return data;
 }

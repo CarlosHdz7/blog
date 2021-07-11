@@ -15,7 +15,7 @@ const loadPosts = async (title = '') => {
   await setLoader(normalPostContainer);
 
   try {
-    let data = {order:'desc', sort:'createDate'};
+    let data = {order:'desc', sort:'id'};
     if(title) data.title = title;
     const posts = await helpers.getPosts(data);
 
@@ -23,7 +23,7 @@ const loadPosts = async (title = '') => {
 
     if(posts.length){
       await clearPost();
-      
+
       for (let post of posts) {
         const postHtml = new HtmlFactory('post', {
           'title':post.title,

@@ -16,6 +16,14 @@ class Utilities{
     });
   }
 
+  setErrorMessage(container, errorElement){
+    container.appendChild(errorElement);
+  }
+
+  removeErrorMessage(container){
+    while(container.firstChild) container.removeChild(container.firstChild);
+  }
+
   async clearBodyTable (bodyTable) {
     while(bodyTable.firstChild) bodyTable.removeChild(bodyTable.firstChild);
   };

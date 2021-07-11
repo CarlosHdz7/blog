@@ -5,9 +5,11 @@ import HtmlFactory from '../patterns/factory.js';
 import { loadNavbar, loadFooter } from '../sharedScripts.js';
 import '../sharedHtmlElements.js';
 import './htmlElements.js';
+import Utilities from '../utilities.js';
 
 let idPost = 0;
 const helpers = new Helpers();
+const utilities = new Utilities();
 
 
 //[FUNCTIONS]
@@ -60,6 +62,7 @@ const loadComments = async () => {
 
 const postComment = async () => {
   try{
+    utilities.removeErrorMessage(errorCommentContainer);
     const comment = textComment.value;
     if(comment){
       await helpers.addComment(comment, idPost);
@@ -68,7 +71,8 @@ const postComment = async () => {
     }
 
   }catch(error){
-    console.log(error.message);
+    const errorHtml = new HtmlFactory('errorMessage', {'message': 'Something when wrong wile add a comment' } );
+    utilities.setErrorMessage(errorCommentContainer,errorHtml);
   }
 }
 

@@ -235,6 +235,21 @@ class ItemResultTag{
   }
 }
 
+class ErrorMessage{
+  constructor(props){
+    this.message = props.message;
+    return this.create();
+  }
+
+  create(){
+    const p = document.createElement('p');
+    p.classList.add('error-message');
+    p.textContent = this.message;
+
+    return p;
+  }
+}
+
 class HtmlFactory {
   constructor(type, props) {
     if(type === "post")
@@ -251,6 +266,8 @@ class HtmlFactory {
       return new TrNoResults(props);
     if(type === "itemResultTag")
       return new ItemResultTag(props);
+    if(type === "errorMessage")
+      return new ErrorMessage(props);
   }
 };
 

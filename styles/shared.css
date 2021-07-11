@@ -150,3 +150,10 @@ footer {
   background-color: var(--red);
   color:var(--white);
 }
+
+.error-message{
+  color:var(--white);
+  background-color: var(--red);
+  padding: 5px;
+  border-radius: var(--radius);
+}

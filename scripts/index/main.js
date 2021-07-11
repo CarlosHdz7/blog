@@ -32,7 +32,8 @@ const getPost = async () => {
   
 
   } catch (error) {
-    window.location.href = './404.html';
+    console.log('error 500')
+    window.location.href = './500.html';
   }
 
 }
@@ -48,16 +49,20 @@ const getTags = async () => {
 const getLatestPost = async () => {
   try {
     const latestPosts = await helpers.getPosts({order:'desc', sort:'createDate', limit:3});  
-    for(let post of latestPosts){
-      const smallPost = new HtmlFactory('smallPost', {
-        'title': post.title, 
-        'url': post.image, 
-        'id': post.id 
-      });
-      smallPostContainer.appendChild(smallPost);
+    if(latestPosts.length){
+      for(let post of latestPosts){
+        const smallPost = new HtmlFactory('smallPost', {
+          'title': post.title, 
+          'url': post.image, 
+          'id': post.id 
+        });
+        smallPostContainer.appendChild(smallPost);
+      }
+    }else{
+      window.location.href = './404.html';
     }
   } catch (error) {
-    window.location.href = './404.html';
+    window.location.href = './500.html';
   }  
 }
 
@@ -72,5 +77,5 @@ const loadHtml = async () => {
 //[TRIGGERS]
 loadHtml();
 getPost();
-getTags();
+// getTags();
 getLatestPost();

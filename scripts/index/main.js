@@ -10,19 +10,29 @@ const helpers = new Helpers();
 
 //[FUNCTIONS]
 const getPost = async () => {
+  try {
+    const posts = await helpers.getPosts({order:'desc', sort:'createDate'});
 
-  const posts = await helpers.getPosts({order:'desc', sort:'createDate'});
+    while(normalPostContainer.firstChild) normalPostContainer.removeChild(normalPostContainer.firstChild);
 
-  for (let i = 0; i < posts.length; i++) {
-    const post = new HtmlFactory('post', {
-      'title': posts[i].title,
-      'url': posts[i].image, 
-      'description': posts[i].subTitle,
-      'date': posts[i].createDate,
-      'id':  posts[i].id
-    });
+    if(posts.length){
+      for (let post of posts) {
+        const postHtml = new HtmlFactory('post', {
+          'title':post.title,
+          'url': post.image, 
+          'description': post.subTitle,
+          'date': post.createDate,
+          'id': post.id
+        });
+        normalPostContainer.appendChild(postHtml);
+      }
+    }else{
+      window.location.href = './404.html';
+    }
+  
 
-    normalPostContainer.appendChild(post);
+  } catch (error) {
+    window.location.href = './404.html';
   }
 
 }
@@ -35,29 +45,20 @@ const getTags = async () => {
   console.log(tags);
 }
 
-const getLatestPost = async () => {  
-  const latestPosts = await helpers.getPosts({order:'desc', sort:'createDate', limit:3});
-  // const lastPost = latestPosts[0];
-
-  // const post = new HtmlFactory('post', {
-  //   'title': lastPost.title, 
-  //   'url': lastPost.image,
-  //   'description': lastPost.subTitle,
-  //   'size':'rectangle',
-  //   'date': lastPost.createDate,
-  //   'id': lastPost.id 
-  // });
-
-  // main.appendChild(post);
-  
-  for(let post of latestPosts){
-    const smallPost = new HtmlFactory('smallPost', {
-      'title': post.title, 
-      'url': post.image, 
-      'id': post.id 
-    });
-    smallPostContainer.appendChild(smallPost);
-  }
+const getLatestPost = async () => {
+  try {
+    const latestPosts = await helpers.getPosts({order:'desc', sort:'createDate', limit:3});  
+    for(let post of latestPosts){
+      const smallPost = new HtmlFactory('smallPost', {
+        'title': post.title, 
+        'url': post.image, 
+        'id': post.id 
+      });
+      smallPostContainer.appendChild(smallPost);
+    }
+  } catch (error) {
+    window.location.href = './404.html';
+  }  
 }
 
 const loadHtml = async () => {

@@ -1,4 +1,4 @@
-import { isNotEmpty, maxLength } from '../validations.js';
+import { isNotEmpty, maxLength, isValidUrl } from '../validations.js';
 
 const validateForm = () => {
   const validations = [
@@ -35,7 +35,13 @@ const validateForm = () => {
     {
       field: 'textUrlImage',
       validate(value, field){
-        return isNotEmpty(value, field, 'You must provide a url for image');
+        return isNotEmpty(value, field, 'You must provide a valid url for image');
+      }
+    },
+    {
+      field: 'textUrlImage',
+      validate(value, field){
+        return isValidUrl(value, field, 'You must provide a valid url for image');
       }
     }
   ];

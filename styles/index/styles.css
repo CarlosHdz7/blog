@@ -75,6 +75,7 @@ section {
   text-decoration: none;
   color: var(--black1);
   height: 57px;
+  overflow: hidden;
 }
 
 .preview-post__subtitle,

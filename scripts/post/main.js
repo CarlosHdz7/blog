@@ -78,12 +78,14 @@ const postComment = async () => {
 
 const setLike = async () => {
   try{
+    utilities.removeErrorMessage(errorLikesContainer);
     const obj = await helpers.getPosts({id: idPost});
     const likes = obj.likes + 1;
     await helpers.addLike(idPost, likes)
     updateLikes();
   }catch(error){
-    console.log(error.message);
+    const errorHtml = new HtmlFactory('errorMessage', {'message': 'Something when wrong while like this post' } );
+    utilities.setErrorMessage(errorLikesContainer,errorHtml);
   }
 }
 

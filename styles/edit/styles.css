@@ -92,3 +92,7 @@
   color: var(--gray3);
   font-size: 14px;
 }
+
+.message{
+  color:var(--red);
+}

@@ -73,6 +73,7 @@ const selectTag = (tag,id) => {
   if(tag.classList.contains('tag-active')){
     tag.classList.remove('tag-active');
     selectedTags = utilities.arrayRemove(selectedTags, id);
+    refreshTagsNumbers();
     loadPosts(inputSearch.value);
     return;
   }
@@ -80,6 +81,15 @@ const selectTag = (tag,id) => {
   loadPosts(inputSearch.value);
   tag.classList.add('tag-active');
   selectedTags.push(id);
+  refreshTagsNumbers();
+};
+
+const refreshTagsNumbers = () => {
+  if(selectedTags.length){
+    textTagsNumber.textContent = `${selectedTags.length} tags selected`;
+    return;
+  }
+  textTagsNumber.textContent = '';
 };
 
 const loadLatestPost = async () => {

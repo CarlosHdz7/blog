@@ -5,6 +5,10 @@
   /* border:1px solid red; */
 }
 
+.container{
+  padding-bottom: 60px;
+}
+
 .post-container,
 .comments-container,
 .arrow-container {

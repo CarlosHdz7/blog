@@ -95,7 +95,8 @@ const updateLikes = async () => {
     const obj = await helpers.getPosts({id: idPost});
     textLikes.textContent = obj.likes;
   }catch(error){
-    console.log(error.message);
+    const errorHtml = new HtmlFactory('errorMessage', {'message': 'Something when wrong while like this post' } );
+    utilities.setErrorMessage(errorLikesContainer,errorHtml);
   }
 }
 

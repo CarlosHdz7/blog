@@ -13,9 +13,7 @@ class Helpers{
     if(sort) url += `&_sort=${sort}`;
     if(limit) url += `&_limit=${limit}`;
     if(title) url += `&title_like=${title}`;
-    if(tags){
-      url += `&tags_like=[${tags}]`;
-    }
+    if(tags) url += `&tags_like=[${tags}]`;
     if(id) url = `/posts/${id}`;
   
     const data = await singleton.getData(url);

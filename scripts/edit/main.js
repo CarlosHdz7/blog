@@ -28,7 +28,6 @@ const addPost = async () => {
     toggleContainers();
 
   }catch(error){
-    console.log(error)
     const errorHtml = new HtmlFactory('errorMessage', {'message': 'Something when wrong wile add a post' } );
     utilities.setErrorMessage(errorFormContainer,errorHtml);
   }
@@ -69,7 +68,7 @@ const loadPost = async (id) => {
     await displayInformation(post);
     toggleContainers();
   } catch (error) {
-    console.log(error.message);
+    window.location.href = './500.html';
   }
 };
 

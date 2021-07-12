@@ -1,6 +1,5 @@
 let instance = null;
 
-/*SINGLETON*/
 class Singleton {
   
   constructor(BASE_URL){
@@ -14,7 +13,6 @@ class Singleton {
     return instance;
   }
 
-  //Reusable functions
   async getData(endpoint = '', message = 'A error has ocurred') {
 
     const response = await fetch(`${this.url}${endpoint}`);

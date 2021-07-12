@@ -65,7 +65,7 @@ const postComment = async () => {
   try{
     utilities.removeErrorMessage(errorCommentContainer);
     const comment = textComment.value;
-    if(comment){
+    if(comment.trim()){
       await helpers.addComment(comment, idPost);
       loadComments(idPost);
       textComment.value = "";

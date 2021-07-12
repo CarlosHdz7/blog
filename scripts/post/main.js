@@ -5,6 +5,7 @@ import HtmlFactory from '../patterns/factory.js';
 import { loadNavbar, loadFooter } from '../sharedScripts.js';
 import '../sharedHtmlElements.js';
 import './htmlElements.js';
+import { throttle } from '../algorithms.js';
 import Utilities from '../utilities.js';
 
 let idPost = 0;
@@ -124,7 +125,9 @@ const refreshTags = async (tagsPost) => {
 
 //[LISTENERS]
 buttonComment.addEventListener('click', postComment);
-buttonLike.addEventListener('click', setLike);
+buttonLike.addEventListener('click', throttle(setLike, 1000));
+// buttonLike.addEventListener('click', setLike);
+
 
 //[TRIGGERS]
 loadHtml();

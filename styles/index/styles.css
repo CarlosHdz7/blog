@@ -133,6 +133,8 @@ section {
   width: 100%;
   border:none;
   box-shadow: var(--shadow);
+  border-radius: 0px var(--radius) var(--radius) 0px;
+  outline: none;
 
 }
 
@@ -149,4 +151,37 @@ section {
 .not-results{
   color: var(--purple);
   font-weight: 700;
+}
+
+.btn-tags{
+  height: 36px;
+  border-radius: var(--radius) 0px  0px var(--radius);
+  background-image: url('../../images/price-tag.png');
+  background-position: center; 
+  background-repeat: no-repeat; 
+  background-size: cover;
+  background-origin: content-box;
+}
+
+.container-tags{
+  width: 100%;
+  height: auto;
+  background-color:var(--white);
+  border-radius: var(--radius);
+  padding: 15px;
+  box-sizing: border-box;
+  box-shadow: var(--shadow);
+}
+
+.tag{
+  cursor: pointer;
+  margin: 3px;
+  display: inline-block;
+  background-color: var(--background);
+  color: var(--black1);
+}
+
+.tag-active{
+  background-color: var(--purple);
+  color: var(--white);
 }

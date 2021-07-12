@@ -4,10 +4,13 @@ import Helpers  from '../helpers.js';
 import HtmlFactory from '../patterns/factory.js';
 import { loadNavbar, loadFooter } from '../sharedScripts.js';
 import { debounce } from '../algorithms.js';
+import Utilities from '../utilities.js';
 import '../sharedHtmlElements.js';
 import './htmlElements.js';
 
 const helpers = new Helpers();
+const utilities = new Utilities();
+let selectedTags = [];
 
 //[FUNCTIONS]
 const loadPosts = async (title = '') => {
@@ -50,12 +53,34 @@ const clearPost = async () => {
 };
 
 const getTags = async () => {
+  
   const tags = await helpers.getTags();
-  for(let tag of tags){
-    const tagHtml = new HtmlFactory('tag', {'name': tag.name } );
+  
+  for (let tag of tags) {
+
+    const tagHtml = new HtmlFactory('tag', {
+      'name': tag.name,
+      'id': tag.id,
+      'cross':false,
+      'events':{
+        'select':selectTag
+      }
+    });
+    containerTags.appendChild(tagHtml);
   }
-  console.log(tags);
 }
+
+const selectTag = (tag,id) => {
+  
+  if(tag.classList.contains('tag-active')){
+    tag.classList.remove('tag-active');
+    selectedTags = utilities.arrayRemove(selectedTags, id);
+    return;
+  }
+  
+  tag.classList.add('tag-active');
+  selectedTags.push(id);
+};
 
 const loadLatestPost = async () => {
   try {
@@ -95,13 +120,21 @@ const setLoader = (container) => {
   container.appendChild(loaderHtml);
 };
 
+const toggleTagContainer = () => {
+  containerTags.classList.toggle('d-none');
+};
+
 //[EVENTS]
 inputSearch.addEventListener('keyup', debounce(() => {
   loadPosts(inputSearch.value);
 }, 500));
 
+buttonTags.addEventListener('click', () => {
+  toggleTagContainer();
+});
+
 //[TRIGGERS]
 loadHtml();
 loadPosts();
-// getTags();
+getTags();
 loadLatestPost();

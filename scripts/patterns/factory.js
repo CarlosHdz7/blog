@@ -121,6 +121,12 @@ class Tags {
         this.events.remove(this.id);
       })
     }
+
+    if(this.events && this.events.hasOwnProperty('select')){
+      div.addEventListener('click', () => {
+        this.events.select(div,this.id);
+      })
+    }
     
     div.classList.add('tag');
     span2.classList.add('close-tag');

@@ -182,6 +182,7 @@ const displayInformation = async (post) => {
   textSubTitle.value = post.subTitle;
   textDescription.textContent = post.body;
   textUrlImage.value = post.image;
+  textDate.value = post.createDate;
   selectedTags = post.tags;
   refreshTags();
 };
@@ -190,6 +191,7 @@ const toggleEventsSaveButton = (action) => {
   if(action === 'add'){
     resetForm();
     formTitle.textContent = 'Create new post';
+    textDate.value = utilities.formatDate(new Date(Date.now()),'yyyy/mm/dd');
     buttonSave.removeEventListener('click', editPost);
     buttonSave.addEventListener('click', addPost);
   }

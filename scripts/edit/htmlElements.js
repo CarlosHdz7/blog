@@ -9,6 +9,7 @@ const textTitle = document.createElement('textTitle');
 const textSubTitle = document.createElement('textSubTitle');
 const textDescription = document.createElement('textDescription');
 const textUrlImage = document.createElement('textUrlImage');
+const textDate = document.createElement('textDate');
 const buttonSave = document.createElement('buttonSave');
 const buttonDelete = document.createElement('buttonDelete');
 const buttonCancel = document.createElement('buttonCancel');

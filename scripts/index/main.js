@@ -20,9 +20,8 @@ const loadPosts = async (title = '') => {
   try {
     let data = {order:'desc', sort:'id'};
     if(title) data.title = title;
+    if(selectedTags.length) data.tags = selectedTags;
     const posts = await helpers.getPosts(data);
-
-    console.log(posts);
 
     if(posts.length){
       await clearPost();
@@ -45,7 +44,6 @@ const loadPosts = async (title = '') => {
   } catch (error) {
     window.location.href = './500.html';
   }
-
 }
 
 const clearPost = async () => {
@@ -75,9 +73,11 @@ const selectTag = (tag,id) => {
   if(tag.classList.contains('tag-active')){
     tag.classList.remove('tag-active');
     selectedTags = utilities.arrayRemove(selectedTags, id);
+    loadPosts(inputSearch.value);
     return;
   }
   
+  loadPosts(inputSearch.value);
   tag.classList.add('tag-active');
   selectedTags.push(id);
 };

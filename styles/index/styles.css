@@ -135,7 +135,7 @@ section {
   box-shadow: var(--shadow);
   border-radius: 0px var(--radius) var(--radius) 0px;
   outline: none;
-
+  padding: 12px;
 }
 
 .like {
@@ -154,13 +154,15 @@ section {
 }
 
 .btn-tags{
-  height: 36px;
+  width: 40px;
+  height: 40px;
   border-radius: var(--radius) 0px  0px var(--radius);
   background-image: url('../../images/price-tag.png');
   background-position: center; 
   background-repeat: no-repeat; 
   background-size: cover;
   background-origin: content-box;
+  padding: 12px;
 }
 
 .container-tags{

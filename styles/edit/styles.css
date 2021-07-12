@@ -68,6 +68,11 @@
 .container-results__item{
   padding: 5px 10px;
 }
+.container-results__item:hover{
+ cursor: pointer;
+ background-color: var(--background);
+ border-radius: var(--radius);
+}
 
 .inner-form{
   display: grid;

@@ -26,23 +26,36 @@ const loadPosts = async (title = '') => {
     if(posts.length){
       await clearPost();
 
+      const tags = await helpers.getTags();
+
       for (let post of posts) {
+
+        const tagsName = [];
+
+        for (const postTag of post.tags) {
+          const tag = tags.find( t => t.id === postTag);
+          tagsName.push(tag.name);
+        }
+
         const postHtml = new HtmlFactory('post', {
           'title':post.title,
           'url': post.image, 
           'description': post.subTitle,
           'date': post.createDate,
           'likes': post.likes,
-          'id': post.id
+          'id': post.id,
+          'tags': tagsName
         });
         normalPostContainer.appendChild(postHtml);
       }
+
     }else{
       await clearPost();
       handleMessages(normalPostContainer);
     }
   } catch (error) {
-    window.location.href = './500.html';
+    console.log(error)
+    // window.location.href = './500.html';
   }
 }
 

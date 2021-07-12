@@ -37,8 +37,9 @@ class Post {
     this.date = props.date;
     this.url = props.url;
     this.size = (props.size) ? props.size : 'square';
-    this.id = props.id;
+    this.id = props.id || 0;
     this.likes = props.likes;
+    this.tags = props.tags;
     return this.create();
   }
 
@@ -49,6 +50,7 @@ class Post {
     const div4 = document.createElement('div');
     const div5 = document.createElement('div');
     const div6 = document.createElement('div');
+    const div7 = document.createElement('div');
 
     const img = document.createElement('img');
     const a = document.createElement('a');
@@ -71,6 +73,7 @@ class Post {
     div4.classList.add('d-flex','justify-content-between');
     div5.classList.add('d-flex');
     div6.classList.add('like','mr-1');
+    div7.classList.add('mt-2');
 
     (this.size === 'square')
       ? div2.classList.add('img-square')
@@ -80,18 +83,28 @@ class Post {
       ? div1.classList.add('preview-post')
       : div1.classList.add('preview-post','w-100')
 
+    if(this.tags.length){
+      for (const tag of this.tags) {
+        const tagHtml = new Tags({'name': tag,'cross':false});
+        div7.appendChild(tagHtml);
+      }
+    }
+  
+    
     div2.appendChild(img);
     div3.appendChild(a);
     div3.appendChild(small);
-
+    
     div5.appendChild(div6);
     div5.appendChild(small3);
     div4.appendChild(div5);
     div4.appendChild(small2);
     div3.appendChild(div4);
     div1.appendChild(div2);
-    div1.appendChild(div3);
 
+    div3.appendChild(div7)
+    div1.appendChild(div3);
+      
     return div1;
   }
 }

@@ -4,7 +4,7 @@ const regExsUtils = new RegExsUtils();
 
 const isNotEmpty = (value, field, errorMessage) => {
   
-  if(!value){
+  if(!value.trim()){
     return {
       success: false,
       errorMessage: errorMessage,

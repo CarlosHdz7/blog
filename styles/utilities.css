@@ -105,6 +105,10 @@
   border-radius: 8px;
 }
 
+.table-responsive{
+  overflow-x:auto;
+}
+
 .table td,
 .table th {
   padding: 8px;

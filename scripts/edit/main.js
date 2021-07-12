@@ -292,7 +292,7 @@ inputSearch.addEventListener('keyup', debounce(() => {
 
 inputSearchTags.addEventListener('keyup', debounce(() => {
   const text = inputSearchTags.value;
-  if(text){
+  if(text.trim()){
     loadTags(text);
   }else{
     closeResultContainer();

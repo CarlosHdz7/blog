@@ -64,3 +64,11 @@
   width: 100%;
   max-height: 500px;
 }
+
+@media (max-width: 1000px) {
+  .container{
+    padding-right: 30px;
+    padding-left: 30px;
+    box-sizing: border-box;
+  }
+}

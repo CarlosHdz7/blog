@@ -1,6 +1,6 @@
 import Singleton from './patterns/singleton.js';
 
-const BASE_URL = 'http://localhost:3000';
+const BASE_URL = 'https://week3-carloshdz.herokuapp.com';
 const singleton = new Singleton(BASE_URL);
 
 class Helpers{

@@ -184,6 +184,7 @@ const displayInformation = async (post) => {
   textUrlImage.value = post.image;
   textDate.value = post.createDate;
   selectedTags = post.tags;
+  selectAuthor.value = post.author;
   refreshTags();
 };
 
@@ -209,7 +210,7 @@ const buildDataPost = (action) => {
     'subTitle':textSubTitle.value,
     'image':textUrlImage.value,
     'body':textDescription.value,
-    'author':1,
+    'author':parseInt(selectAuthor.value),
     'tags': selectedTags
   }
 
@@ -263,6 +264,15 @@ const refreshTags = async () => {
   }
 };
 
+const loadAuthors = async () => {
+  const authors = await getAuthors();
+  for(let author of authors){
+    console.log(author);
+    const optionHtml = new HtmlFactory('option',{id:author.id, text:`${author.name} ${author.lastName}`})
+    selectAuthor.appendChild(optionHtml);
+  }
+};
+
 //[EVENTS]
 buttonShowForm.addEventListener('click', () => {
   toggleEventsSaveButton('add');
@@ -310,5 +320,5 @@ window.addEventListener('click', (event) => {
 //[TRIGGERS]
 loadHtml();
 loadPosts();
+loadAuthors();
 resetForm();
-getAuthors();

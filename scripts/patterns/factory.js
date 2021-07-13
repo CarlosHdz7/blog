@@ -312,6 +312,22 @@ class Loader{
   }
 }
 
+class Option{
+  constructor(props){
+    this.id = props.id;
+    this.text = props.text;
+    return this.create();
+  }
+
+  create(){
+    let option = document.createElement('option');
+    let text = document.createTextNode(this.text);
+    option.value = this.id;
+    option.appendChild(text);
+    return option;
+  }
+}
+
 class HtmlFactory {
   constructor(type, props) {
     if(type === "post")
@@ -334,6 +350,8 @@ class HtmlFactory {
       return new NotResults();
     if(type === "loader")
       return new Loader();
+    if(type === "option")
+      return new Option(props);
   }
 };
 

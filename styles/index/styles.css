@@ -1,9 +1,5 @@
-@import url("../utilities.css");
-@import url("../shared.css");
-
-*{
-  /* border:1px solid red; */
-}
+@import url('../utilities.css');
+@import url('../shared.css');
 
 header {
   width: 100%;
@@ -69,7 +65,7 @@ section {
 
 .preview-post__description {
   padding: 20px;
-  color:var(--black1)
+  color: var(--black1);
 }
 
 .preview-post__title {
@@ -126,14 +122,14 @@ section {
   align-items: center;
   font-size: 12px;
   text-decoration: none;
-  color:var(--black1);
+  color: var(--black1);
   font-weight: 700;
 }
 
-.input-search--index{
+.input-search--index {
   background-color: var(--white);
   width: 100%;
-  border:none;
+  border: none;
   box-shadow: var(--shadow);
   border-radius: 0px var(--radius) var(--radius) 0px;
   outline: none;
@@ -143,41 +139,41 @@ section {
 .like {
   width: 20px;
   height: 20px;
-  background-image: url("../../images/heart.png");
+  background-image: url('../../images/heart.png');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   background-origin: content-box;
 }
 
-.not-results{
+.not-results {
   color: var(--purple);
   font-weight: 700;
 }
 
-.btn-tags{
+.btn-tags {
   width: 40px;
   height: 40px;
-  border-radius: var(--radius) 0px  0px var(--radius);
+  border-radius: var(--radius) 0px 0px var(--radius);
   background-image: url('../../images/price-tag.png');
-  background-position: center; 
-  background-repeat: no-repeat; 
+  background-position: center;
+  background-repeat: no-repeat;
   background-size: cover;
   background-origin: content-box;
   padding: 12px;
 }
 
-.container-tags{
+.container-tags {
   width: 100%;
   height: auto;
-  background-color:var(--white);
+  background-color: var(--white);
   border-radius: var(--radius);
   padding: 15px;
   box-sizing: border-box;
   box-shadow: var(--shadow);
 }
 
-.tag{
+.tag {
   cursor: pointer;
   margin: 3px;
   display: inline-block;
@@ -185,12 +181,12 @@ section {
   color: var(--black1);
 }
 
-.tag-active{
+.tag-active {
   background-color: var(--purple);
   color: var(--white);
 }
 
-.container{
+.container {
   padding-right: 30px;
   padding-left: 30px;
   padding-bottom: 50px;
@@ -198,14 +194,11 @@ section {
 }
 
 @media (max-width: 1024px) {
-
   .inner-container {
     grid-template-columns: 6fr 6fr;
     grid-template-rows: auto;
   }
-
 }
-
 
 @media (max-width: 700px) {
   .inner-container {
@@ -216,12 +209,11 @@ section {
 }
 
 @media (max-width: 480px) {
-
-  section{
+  section {
     display: inline-block;
   }
 
-  .preview-post{
+  .preview-post {
     width: 100%;
     display: inline-block;
     margin-bottom: 15px;

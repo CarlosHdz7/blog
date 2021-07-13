@@ -8,7 +8,4 @@ const loadFooter = async () => {
   return htmlFooter.text();
 };
 
-export {
-  loadNavbar,
-  loadFooter
-}
+export { loadNavbar, loadFooter };

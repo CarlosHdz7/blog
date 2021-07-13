@@ -1,7 +1,7 @@
-@import url("../utilities.css");
-@import url("../shared.css");
+@import url('../utilities.css');
+@import url('../shared.css');
 
-.container{
+.container {
   padding-bottom: 60px;
 }
 
@@ -18,7 +18,8 @@
   margin: 0px;
 }
 
-.button-edit,.button-delete{
+.button-edit,
+.button-delete {
   width: 25px;
   height: 25px;
   background-position: center;
@@ -32,28 +33,28 @@
   margin: 3px;
 }
 
-.button-edit{
-  background-image: url("../../images/edit.png");
+.button-edit {
+  background-image: url('../../images/edit.png');
   background-color: var(--yellow);
 }
 
-.button-delete{
-  background-image: url("../../images/trash.png");
+.button-delete {
+  background-image: url('../../images/trash.png');
   background-color: var(--red);
 }
 
-.container-input{
+.container-input {
   position: relative;
 }
 
-.container__results{
+.container__results {
   display: none;
   position: absolute;
   top: 40px;
   left: 0px;
   width: 100%;
   height: auto;
-  border:1px solid gray;
+  border: 1px solid gray;
   z-index: 100;
   background-color: var(--white);
   border-radius: var(--radius);
@@ -61,23 +62,23 @@
   box-sizing: border-box;
 }
 
-.container-results__item{
+.container-results__item {
   padding: 5px 10px;
 }
-.container-results__item:hover{
- cursor: pointer;
- background-color: var(--background);
- border-radius: var(--radius);
+.container-results__item:hover {
+  cursor: pointer;
+  background-color: var(--background);
+  border-radius: var(--radius);
 }
 
-.inner-form{
+.inner-form {
   display: grid;
   grid-template-columns: 9fr 3fr;
   grid-template-rows: auto;
   grid-gap: 15px;
 }
 
-.tags-container{
+.tags-container {
   margin-top: 10px;
   display: flex;
   flex-direction: column;
@@ -85,39 +86,38 @@
   padding: 5px;
 }
 
-.close-tag{
+.close-tag {
   margin-left: 5px;
   font-weight: 700;
   padding: 3px;
   cursor: pointer;
 }
 
-.title-form{
+.title-form {
   margin: 10px 0px 10px 0px;
   color: var(--gray3);
   font-size: 14px;
 }
 
-.message{
-  color:var(--red);
+.message {
+  color: var(--red);
 }
 
 @media (max-width: 900px) {
-  .container{
+  .container {
     padding-right: 30px;
     padding-left: 30px;
     box-sizing: border-box;
   }
 
-  .inner-form{
+  .inner-form {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: auto;
     grid-gap: 15px;
   }
 
-  .input-search{
+  .input-search {
     width: 100%;
   }
-  
 }

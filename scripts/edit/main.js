@@ -1,8 +1,8 @@
-'use strict'
+'use strict';
 
 import './htmlElements.js';
 import '../sharedHtmlElements.js';
-import Helpers  from '../helpers.js';
+import Helpers from '../helpers.js';
 import HtmlFactory from '../patterns/factory.js';
 import { loadNavbar, loadFooter } from '../sharedScripts.js';
 import { debounce } from '../algorithms.js';
@@ -15,9 +15,8 @@ let selectedTags = [];
 
 //[FUNCTIONS]
 const addPost = async () => {
-  try{
-
-    if(!validateForm()){
+  try {
+    if (!validateForm()) {
       return false;
     }
 
@@ -26,10 +25,11 @@ const addPost = async () => {
     await helpers.addPost(data);
     await loadPosts();
     toggleContainers();
-
-  }catch(error){
-    const errorHtml = new HtmlFactory('errorMessage', {'message': 'Something when wrong wile add a post' } );
-    utilities.setErrorMessage(errorFormContainer,errorHtml);
+  } catch (error) {
+    const errorHtml = new HtmlFactory('errorMessage', {
+      message: 'Something when wrong wile add a post',
+    });
+    utilities.setErrorMessage(errorFormContainer, errorHtml);
   }
 };
 
@@ -43,9 +43,8 @@ const deletePost = async (id) => {
 };
 
 const editPost = async () => {
-  try{
-
-    if(!validateForm()){
+  try {
+    if (!validateForm()) {
       return false;
     }
 
@@ -54,17 +53,18 @@ const editPost = async () => {
     await helpers.patchPost(data);
     await loadPosts();
     toggleContainers();
-
-  }catch(error){
-    const errorHtml = new HtmlFactory('errorMessage', {'message': 'Something when wrong wile edit a post' } );
-    utilities.setErrorMessage(errorFormContainer,errorHtml);
+  } catch (error) {
+    const errorHtml = new HtmlFactory('errorMessage', {
+      message: 'Something when wrong wile edit a post',
+    });
+    utilities.setErrorMessage(errorFormContainer, errorHtml);
   }
-}
+};
 
 const loadPost = async (id) => {
   try {
     toggleEventsSaveButton('edit');
-    const post = await helpers.getPosts({id: id});
+    const post = await helpers.getPosts({ id: id });
     await displayInformation(post);
     toggleContainers();
   } catch (error) {
@@ -74,51 +74,50 @@ const loadPost = async (id) => {
 
 const loadPosts = async (title = '') => {
   try {
-    let data = {order:'desc', sort:'id'};
-    if(title) data.title = title;
-  
+    let data = { order: 'desc', sort: 'id' };
+    if (title) data.title = title;
+
     const authors = await getAuthors();
     const posts = await helpers.getPosts(data);
-  
+
     await utilities.clearBodyTable(blogsTableBody);
-  
-    if(posts.length){
+
+    if (posts.length) {
       for (let post of posts) {
-    
-        let author = authors.find( a => a.id === post.author);
-        author = (author) ? `${author.name} ${author.lastName}` : 'Unknown';
-    
+        let author = authors.find((a) => a.id === post.author);
+        author = author ? `${author.name} ${author.lastName}` : 'Unknown';
+
         const trHtml = new HtmlFactory('tr', {
-          'id': post.id,
-          'title': post.title,
-          'date': post.createDate,
-          'author':  author,
-          'events':{
-            'delete': showDeleteModal,
-            'edit': loadPost
-          }
+          id: post.id,
+          title: post.title,
+          date: post.createDate,
+          author: author,
+          events: {
+            delete: showDeleteModal,
+            edit: loadPost,
+          },
         });
-    
+
         blogsTableBody.appendChild(trHtml);
       }
-    }else{
-      setEmptyTable(blogsTableBody,5);
+    } else {
+      setEmptyTable(blogsTableBody, 5);
     }
   } catch (error) {
     window.location.href = './500.html';
   }
 };
 
-const setEmptyTable  = async (bodyTable, colSpan) => {
+const setEmptyTable = async (bodyTable, colSpan) => {
   await utilities.clearBodyTable(bodyTable);
   const trHtml = new HtmlFactory('trNoResults', {
-    'colSpan': colSpan,
+    colSpan: colSpan,
   });
   bodyTable.appendChild(trHtml);
 };
 
 const selectTag = (id) => {
-  inputSearchTags.value = "";
+  inputSearchTags.value = '';
   selectedTags.push(id);
   closeResultContainer();
   refreshTags();
@@ -137,20 +136,20 @@ const showResultContainer = () => {
   containerResults.style.display = 'block';
 };
 
-const loadTags = async (name = '') =>{
+const loadTags = async (name = '') => {
+  const tags = await helpers.getTags({ name: name, ignoreTags: selectedTags });
 
-  const tags = await helpers.getTags({name : name, ignoreTags: selectedTags});
+  while (containerResults.firstChild)
+    containerResults.removeChild(containerResults.firstChild);
 
-  while(containerResults.firstChild) containerResults.removeChild(containerResults.firstChild);
-
-  if(tags.length){
+  if (tags.length) {
     for (let tag of tags) {
       const itemHtml = new HtmlFactory('itemResultTag', {
-        'id': tag.id,
-        'name': tag.name,
-        'events':{
-          'select': selectTag,
-        }
+        id: tag.id,
+        name: tag.name,
+        events: {
+          select: selectTag,
+        },
       });
       containerResults.appendChild(itemHtml);
     }
@@ -188,16 +187,16 @@ const displayInformation = async (post) => {
   refreshTags();
 };
 
-const toggleEventsSaveButton = (action) => { 
-  if(action === 'add'){
+const toggleEventsSaveButton = (action) => {
+  if (action === 'add') {
     resetForm();
     formTitle.textContent = 'Create new post';
-    textDate.value = utilities.formatDate(new Date(Date.now()),'yyyy/mm/dd');
+    textDate.value = utilities.formatDate(new Date(Date.now()), 'yyyy/mm/dd');
     buttonSave.removeEventListener('click', editPost);
     buttonSave.addEventListener('click', addPost);
   }
 
-  if(action === 'edit'){
+  if (action === 'edit') {
     formTitle.textContent = 'Edit post';
     buttonSave.removeEventListener('click', addPost);
     buttonSave.addEventListener('click', editPost);
@@ -206,29 +205,31 @@ const toggleEventsSaveButton = (action) => {
 
 const buildDataPost = (action) => {
   let data = {
-    'title':textTitle.value,
-    'subTitle':textSubTitle.value,
-    'image':textUrlImage.value,
-    'body':textDescription.value,
-    'author':parseInt(selectAuthor.value),
-    'tags': selectedTags
-  }
-
-  if(action === 'edit') { data.id = textIdPost.value; };
-  if(action === 'add') { 
-    data.likes = 0; 
-    data.createDate = utilities.formatDate(new Date(Date.now()),'yyyy/mm/dd'); 
+    title: textTitle.value,
+    subTitle: textSubTitle.value,
+    image: textUrlImage.value,
+    body: textDescription.value,
+    author: parseInt(selectAuthor.value),
+    tags: selectedTags,
   };
 
+  if (action === 'edit') {
+    data.id = textIdPost.value;
+  }
+  if (action === 'add') {
+    data.likes = 0;
+    data.createDate = utilities.formatDate(new Date(Date.now()), 'yyyy/mm/dd');
+  }
+
   return data;
-}
+};
 
 const resetForm = () => {
   textDescription.textContent = '';
   selectedTags = [];
   clearTagsContainer();
   formContainer.reset();
-}
+};
 
 const showDeleteModal = (id) => {
   spanIdPost.textContent = id;
@@ -241,24 +242,25 @@ const closeDeleteModal = () => {
 };
 
 const clearTagsContainer = async () => {
-  while(tagsContainer.firstChild) tagsContainer.removeChild(tagsContainer.firstChild);
+  while (tagsContainer.firstChild)
+    tagsContainer.removeChild(tagsContainer.firstChild);
 };
 
 const refreshTags = async () => {
   const tags = await helpers.getTags();
 
   await clearTagsContainer();
-  
+
   for (const selectedTag of selectedTags) {
-    const tag = tags.find( t => t.id === selectedTag);
+    const tag = tags.find((t) => t.id === selectedTag);
 
     const tagHtml = new HtmlFactory('tag', {
-      'name': tag.name,
-      'id': tag.id,
-      'cross':true,
-      'events':{
-        'remove': removeTag
-      }
+      name: tag.name,
+      id: tag.id,
+      cross: true,
+      events: {
+        remove: removeTag,
+      },
     });
     tagsContainer.appendChild(tagHtml);
   }
@@ -266,9 +268,12 @@ const refreshTags = async () => {
 
 const loadAuthors = async () => {
   const authors = await getAuthors();
-  for(let author of authors){
+  for (let author of authors) {
     console.log(author);
-    const optionHtml = new HtmlFactory('option',{id:author.id, text:`${author.name} ${author.lastName}`})
+    const optionHtml = new HtmlFactory('option', {
+      id: author.id,
+      text: `${author.name} ${author.lastName}`,
+    });
     selectAuthor.appendChild(optionHtml);
   }
 };
@@ -298,18 +303,24 @@ closeSpan.addEventListener('click', () => {
   closeDeleteModal();
 });
 
-inputSearch.addEventListener('keyup', debounce(() => {
-  loadPosts(inputSearch.value);
-}, 500));
+inputSearch.addEventListener(
+  'keyup',
+  debounce(() => {
+    loadPosts(inputSearch.value);
+  }, 500)
+);
 
-inputSearchTags.addEventListener('keyup', debounce(() => {
-  const text = inputSearchTags.value;
-  if(text.trim()){
-    loadTags(text);
-  }else{
-    closeResultContainer();
-  }
-}, 500));
+inputSearchTags.addEventListener(
+  'keyup',
+  debounce(() => {
+    const text = inputSearchTags.value;
+    if (text.trim()) {
+      loadTags(text);
+    } else {
+      closeResultContainer();
+    }
+  }, 500)
+);
 
 window.addEventListener('click', (event) => {
   if (event.target == modalDelete) {

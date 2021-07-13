@@ -1,60 +1,53 @@
-import RegExsUtils from "./regExs.js";
+import RegExsUtils from './regExs.js';
 
 const regExsUtils = new RegExsUtils();
 
 const isNotEmpty = (value, field, errorMessage) => {
-  
-  if(!value.trim()){
+  if (!value.trim()) {
     return {
       success: false,
       errorMessage: errorMessage,
-      field: field
+      field: field,
     };
   }
 
   return {
     success: true,
     errorMessage: '',
-    field:field
+    field: field,
   };
-} 
+};
 
 const maxLength = (value, field, errorMessage, max) => {
-  
-  if(value.length > max){
+  if (value.length > max) {
     return {
       success: false,
       errorMessage: errorMessage,
-      field: field
+      field: field,
     };
   }
 
   return {
     success: true,
     errorMessage: '',
-    field:field
+    field: field,
   };
-} 
+};
 
 const isValidUrl = (value, field, errorMessage) => {
-  
-  if(!regExsUtils.isValidUrl.test(value)){
+  if (!regExsUtils.isValidUrl.test(value)) {
     return {
       success: false,
       errorMessage: errorMessage,
-      field: field
+      field: field,
     };
   }
 
   return {
     success: true,
     errorMessage: '',
-    field:field
+    field: field,
   };
-} 
+};
 
-export {
-  isNotEmpty,
-  maxLength,
-  isValidUrl
-}
+export { isNotEmpty, maxLength, isValidUrl };

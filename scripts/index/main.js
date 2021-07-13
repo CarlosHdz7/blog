@@ -1,6 +1,6 @@
-'use strict'
+'use strict';
 
-import Helpers  from '../helpers.js';
+import Helpers from '../helpers.js';
 import HtmlFactory from '../patterns/factory.js';
 import { loadNavbar, loadFooter } from '../sharedScripts.js';
 import { debounce } from '../algorithms.js';
@@ -18,79 +18,75 @@ const loadPosts = async (title = '') => {
   await setLoader(normalPostContainer);
 
   try {
-    let data = {order:'desc', sort:'id'};
-    if(title) data.title = title;
-    if(selectedTags.length) data.tags = selectedTags;
+    let data = { order: 'desc', sort: 'id' };
+    if (title) data.title = title;
+    if (selectedTags.length) data.tags = selectedTags;
     const posts = await helpers.getPosts(data);
 
-    if(posts.length){
+    if (posts.length) {
       await clearPost();
 
       const tags = await helpers.getTags();
 
       for (let post of posts) {
-
         const tagsName = [];
 
         for (const postTag of post.tags) {
-          const tag = tags.find( t => t.id === postTag);
+          const tag = tags.find((t) => t.id === postTag);
           tagsName.push(tag.name);
         }
 
         const postHtml = new HtmlFactory('post', {
-          'title':post.title,
-          'url': post.image, 
-          'description': post.subTitle,
-          'date': post.createDate,
-          'likes': post.likes,
-          'id': post.id,
-          'tags': tagsName
+          title: post.title,
+          url: post.image,
+          description: post.subTitle,
+          date: post.createDate,
+          likes: post.likes,
+          id: post.id,
+          tags: tagsName,
         });
         normalPostContainer.appendChild(postHtml);
       }
-
-    }else{
+    } else {
       await clearPost();
       handleMessages(normalPostContainer);
     }
   } catch (error) {
-    console.log(error)
+    console.log(error);
     // window.location.href = './500.html';
   }
-}
+};
 
 const clearPost = async () => {
-  while(normalPostContainer.firstChild) normalPostContainer.removeChild(normalPostContainer.firstChild);
+  while (normalPostContainer.firstChild)
+    normalPostContainer.removeChild(normalPostContainer.firstChild);
 };
 
 const getTags = async () => {
-  
   const tags = await helpers.getTags();
-  
-  for (let tag of tags) {
 
+  for (let tag of tags) {
     const tagHtml = new HtmlFactory('tag', {
-      'name': tag.name,
-      'id': tag.id,
-      'cross':false,
-      'events':{
-        'select':selectTag
-      }
+      name: tag.name,
+      id: tag.id,
+      cross: false,
+      events: {
+        select: selectTag,
+      },
     });
     containerTags.appendChild(tagHtml);
   }
-}
+};
 
-const selectTag = (tag,id) => {
-  
-  if(tag.classList.contains('tag-active')){
+const selectTag = (tag, id) => {
+  if (tag.classList.contains('tag-active')) {
     tag.classList.remove('tag-active');
     selectedTags = utilities.arrayRemove(selectedTags, id);
     refreshTagsNumbers();
     loadPosts(inputSearch.value);
     return;
   }
-  
+
   loadPosts(inputSearch.value);
   tag.classList.add('tag-active');
   selectedTags.push(id);
@@ -98,7 +94,7 @@ const selectTag = (tag,id) => {
 };
 
 const refreshTagsNumbers = () => {
-  if(selectedTags.length){
+  if (selectedTags.length) {
     textTagsNumber.textContent = `${selectedTags.length} tags selected`;
     return;
   }
@@ -107,23 +103,27 @@ const refreshTagsNumbers = () => {
 
 const loadLatestPost = async () => {
   try {
-    const latestPosts = await helpers.getPosts({order:'desc', sort:'createDate', limit:3});  
-    if(latestPosts.length){
-      for(let post of latestPosts){
+    const latestPosts = await helpers.getPosts({
+      order: 'desc',
+      sort: 'createDate',
+      limit: 3,
+    });
+    if (latestPosts.length) {
+      for (let post of latestPosts) {
         const smallPost = new HtmlFactory('smallPost', {
-          'title': post.title, 
-          'url': post.image, 
-          'id': post.id 
+          title: post.title,
+          url: post.image,
+          id: post.id,
         });
         smallPostContainer.appendChild(smallPost);
       }
-    }else{
+    } else {
       handleMessages(smallPostContainer);
     }
   } catch (error) {
     window.location.href = './500.html';
-  }  
-}
+  }
+};
 
 const loadHtml = async () => {
   const navbar = await loadNavbar();
@@ -134,12 +134,12 @@ const loadHtml = async () => {
 };
 
 const handleMessages = (container) => {
-  const messageHtml = new HtmlFactory('notResults', {} );
+  const messageHtml = new HtmlFactory('notResults', {});
   container.appendChild(messageHtml);
 };
 
 const setLoader = (container) => {
-  const loaderHtml = new HtmlFactory('loader', {} );
+  const loaderHtml = new HtmlFactory('loader', {});
   container.appendChild(loaderHtml);
 };
 
@@ -148,9 +148,12 @@ const toggleTagContainer = () => {
 };
 
 //[EVENTS]
-inputSearch.addEventListener('keyup', debounce(() => {
-  loadPosts(inputSearch.value);
-}, 500));
+inputSearch.addEventListener(
+  'keyup',
+  debounce(() => {
+    loadPosts(inputSearch.value);
+  }, 500)
+);
 
 buttonTags.addEventListener('click', () => {
   toggleTagContainer();

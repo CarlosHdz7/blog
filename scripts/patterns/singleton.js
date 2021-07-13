@@ -1,9 +1,7 @@
 let instance = null;
 
 class Singleton {
-  
-  constructor(BASE_URL){
-
+  constructor(BASE_URL) {
     if (!instance) {
       instance = this;
     }
@@ -14,109 +12,98 @@ class Singleton {
   }
 
   async getData(endpoint = '', message = 'A error has ocurred') {
-
     const response = await fetch(`${this.url}${endpoint}`);
 
-    if(!response.ok){
+    if (!response.ok) {
       throw new Error(message);
     }
-    
+
     const data = await response.json();
     return data;
-    
   }
 
   async postData(endpoint = '', data = {}, message = 'A error has ocurred') {
-
     const response = await fetch(`${this.url}${endpoint}`, {
-      method: 'POST', 
+      method: 'POST',
       mode: 'cors',
-      cache: 'no-cache', 
+      cache: 'no-cache',
       credentials: 'same-origin',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       },
       redirect: 'follow',
-      referrerPolicy: 'no-referrer', 
-      body: JSON.stringify(data)
+      referrerPolicy: 'no-referrer',
+      body: JSON.stringify(data),
     });
 
-    if(!response.ok){
+    if (!response.ok) {
       throw new Error(message);
     }
 
     return response.json();
-    
   }
 
   async patchData(endpoint = '', data = {}, message = 'A error has ocurred') {
-
     const response = await fetch(`${this.url}${endpoint}`, {
-      method: 'PATCH', 
+      method: 'PATCH',
       mode: 'cors',
-      cache: 'no-cache', 
+      cache: 'no-cache',
       credentials: 'same-origin',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       },
       redirect: 'follow',
-      referrerPolicy: 'no-referrer', 
-      body: JSON.stringify(data)
+      referrerPolicy: 'no-referrer',
+      body: JSON.stringify(data),
     });
 
-    if(!response.ok){
+    if (!response.ok) {
       throw new Error(message);
     }
 
     return response.json();
-    
   }
 
   async deleteData(endpoint = '', message = 'A error has ocurred') {
-
     const response = await fetch(`${this.url}${endpoint}`, {
-      method: 'DELETE', 
+      method: 'DELETE',
       mode: 'cors',
-      cache: 'no-cache', 
+      cache: 'no-cache',
       credentials: 'same-origin',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       },
       redirect: 'follow',
-      referrerPolicy: 'no-referrer', 
+      referrerPolicy: 'no-referrer',
     });
 
-    if(!response.ok){
+    if (!response.ok) {
       throw new Error(message);
     }
 
     return response.json();
-    
   }
 
   async updateData(endpoint = '', data = {}, message = 'A error has ocurred') {
-
     const response = await fetch(`${this.url}${endpoint}`, {
-      method: 'UPDATE', 
+      method: 'UPDATE',
       mode: 'cors',
-      cache: 'no-cache', 
+      cache: 'no-cache',
       credentials: 'same-origin',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       },
       redirect: 'follow',
-      referrerPolicy: 'no-referrer', 
-      body: JSON.stringify(data)
+      referrerPolicy: 'no-referrer',
+      body: JSON.stringify(data),
     });
 
-    if(!response.ok){
+    if (!response.ok) {
       throw new Error(message);
     }
 
     return response.json();
-    
   }
-
 }
 
 export default Singleton;

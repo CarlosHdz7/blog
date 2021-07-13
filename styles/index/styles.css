@@ -197,20 +197,17 @@ section {
   box-sizing: border-box;
 }
 
+@media (max-width: 1024px) {
+
+  .inner-container {
+    grid-template-columns: 6fr 6fr;
+    grid-template-rows: auto;
+  }
+
+}
+
+
 @media (max-width: 700px) {
-
-
-
-  /* section{
-    display: inline-block;
-  } */
-
-  /* .preview-post{
-    width: 100%;
-    display: inline-block;
-    margin-bottom: 15px;
-  } */
-
   .inner-container {
     display: block;
     box-sizing: border-box;
@@ -219,8 +216,6 @@ section {
 }
 
 @media (max-width: 480px) {
-
-
 
   section{
     display: inline-block;

@@ -16,8 +16,9 @@ let selectedTags = [];
 //[FUNCTIONS]
 const addPost = async () => {
   try {
+
     if (!validateForm()) {
-      return false;
+      return;
     }
 
     utilities.removeErrorMessage(errorFormContainer);
@@ -27,7 +28,7 @@ const addPost = async () => {
     toggleContainers();
   } catch (error) {
     const errorHtml = new HtmlFactory('errorMessage', {
-      message: 'Something when wrong wile add a post',
+      message: error.message,
     });
     utilities.setErrorMessage(errorFormContainer, errorHtml);
   }
@@ -55,7 +56,7 @@ const editPost = async () => {
     toggleContainers();
   } catch (error) {
     const errorHtml = new HtmlFactory('errorMessage', {
-      message: 'Something when wrong wile edit a post',
+      message: error.message,
     });
     utilities.setErrorMessage(errorFormContainer, errorHtml);
   }
@@ -269,7 +270,6 @@ const refreshTags = async () => {
 const loadAuthors = async () => {
   const authors = await getAuthors();
   for (let author of authors) {
-    console.log(author);
     const optionHtml = new HtmlFactory('option', {
       id: author.id,
       text: `${author.name} ${author.lastName}`,
@@ -285,6 +285,7 @@ buttonShowForm.addEventListener('click', () => {
 });
 
 buttonBackForm.addEventListener('click', async () => {
+  utilities.removeErrorMessage(errorFormContainer);
   await cleanErrorsMessages();
   resetForm();
   toggleContainers();

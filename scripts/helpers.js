@@ -1,4 +1,5 @@
 import Singleton from './patterns/singleton.js';
+import errorMessages from './errorMessages.js';
 
 const BASE_URL = 'https://week3-carloshdz.herokuapp.com';
 const singleton = new Singleton(BASE_URL);
@@ -57,17 +58,17 @@ class Helpers {
 
   async addComment(comment, idPost) {
     let url = `/comments`;
-    await singleton.postData(url, { comment: comment, postId: idPost });
+    await singleton.postData(url, { comment: comment, postId: idPost }, errorMessages['addComment']);
   }
 
   async addLike(idPost, likes) {
     let url = `/posts/${idPost}`;
-    await singleton.patchData(url, { likes: likes });
+    await singleton.patchData(url, { likes: likes }, errorMessages['likePost']);
   }
 
   async addPost(data) {
     let url = `/posts`;
-    await singleton.postData(url, data);
+    await singleton.postData(url, data, errorMessages['addPost']);
   }
 
   async updatePost(data) {
@@ -77,7 +78,7 @@ class Helpers {
 
   async patchPost(data) {
     let url = `/posts/${data.id}`;
-    await singleton.patchData(url, data);
+    await singleton.patchData(url, data, errorMessages['patchPost']);
   }
 
   async deletePost(id) {

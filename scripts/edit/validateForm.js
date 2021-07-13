@@ -67,6 +67,8 @@ const validateForm = () => {
     }
   });
 
+  cleanErrorsMessages();
+
   if (errors.length > 0) {
     handleErrors(errors);
     return false;

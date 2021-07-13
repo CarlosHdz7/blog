@@ -52,8 +52,7 @@ const loadPosts = async (title = '') => {
       handleMessages(normalPostContainer);
     }
   } catch (error) {
-    console.log(error);
-    // window.location.href = './500.html';
+    window.location.href = './500.html';
   }
 };
 

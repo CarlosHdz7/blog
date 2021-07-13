@@ -76,7 +76,7 @@ const postComment = async () => {
     }
   } catch (error) {
     const errorHtml = new HtmlFactory('errorMessage', {
-      message: 'Something when wrong wile add a comment',
+      message: error.message
     });
     utilities.setErrorMessage(errorCommentContainer, errorHtml);
   }
@@ -91,7 +91,7 @@ const setLike = async () => {
     updateLikes();
   } catch (error) {
     const errorHtml = new HtmlFactory('errorMessage', {
-      message: 'Something when wrong while like this post',
+      message: error.message,
     });
     utilities.setErrorMessage(errorLikesContainer, errorHtml);
   }
@@ -103,7 +103,7 @@ const updateLikes = async () => {
     textLikes.textContent = obj.likes;
   } catch (error) {
     const errorHtml = new HtmlFactory('errorMessage', {
-      message: 'Something when wrong while like this post',
+      message: error.message,
     });
     utilities.setErrorMessage(errorLikesContainer, errorHtml);
   }

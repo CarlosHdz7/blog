@@ -1,6 +1,10 @@
 @import url("../utilities.css");
 @import url("../shared.css");
 
+*{
+  /* border:1px solid red; */
+}
+
 header {
   width: 100%;
   height: auto;
@@ -33,7 +37,7 @@ section {
 
 .inner-container {
   display: grid;
-  grid-template-columns: 8fr 4fr;
+  grid-template-columns: 9fr 3fr;
   grid-template-rows: auto;
   grid-gap: 10px;
   margin-bottom: 20px;
@@ -186,16 +190,46 @@ section {
   color: var(--white);
 }
 
-@media (max-width: 900px) {
+.container{
+  padding-right: 30px;
+  padding-left: 30px;
+  padding-bottom: 50px;
+  box-sizing: border-box;
+}
 
-  .container{
-    padding-right: 30px;
-    padding-left: 30px;
+@media (max-width: 700px) {
+
+
+
+  /* section{
+    display: inline-block;
+  } */
+
+  /* .preview-post{
+    width: 100%;
+    display: inline-block;
+    margin-bottom: 15px;
+  } */
+
+  .inner-container {
+    display: block;
     box-sizing: border-box;
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+
+
+
+  section{
+    display: inline-block;
   }
 
   .preview-post{
     width: 100%;
+    display: inline-block;
+    margin-bottom: 15px;
   }
 
   .inner-container {

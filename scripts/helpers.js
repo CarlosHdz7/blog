@@ -83,7 +83,7 @@ class Helpers {
 
   async deletePost(id) {
     let url = `/posts/${id}`;
-    const data = await singleton.deleteData(url);
+    const data = await singleton.deleteData(url, errorMessages['deletePost']);
     return data;
   }
 }

@@ -34,14 +34,11 @@ const addPost = async () => {
   }
 };
 
-const deletePost = async (id) => {
-  try {
-    await helpers.deletePost(id);
-    loadPosts();
-  } catch (error) {
-    console.log(error.message);
-  }
-};
+// const deletePost = async (id) => {
+//     utilities.removeErrorMessage(errorModalContainer);
+//     await helpers.deletePost(id);
+//     loadPosts();
+// };
 
 const editPost = async () => {
   try {
@@ -239,6 +236,7 @@ const showDeleteModal = (id) => {
 };
 
 const closeDeleteModal = () => {
+  utilities.removeErrorMessage(errorModalContainer);
   modalDelete.style.display = 'none';
 };
 
@@ -292,8 +290,18 @@ buttonBackForm.addEventListener('click', async () => {
 });
 
 buttonDelete.addEventListener('click', async (event) => {
-  await deletePost(event.target.dataset.idPost);
-  closeDeleteModal();
+  try {
+    utilities.removeErrorMessage(errorModalContainer);
+
+    await helpers.deletePost(event.target.dataset.idPost);
+    loadPosts();
+    closeDeleteModal();
+  } catch (error) {
+    const errorHtml = new HtmlFactory('errorMessage', {
+      message: error.message,
+    });
+    utilities.setErrorMessage(errorModalContainer, errorHtml);
+  }
 });
 
 buttonCancel.addEventListener('click', () => {

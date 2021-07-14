@@ -16,7 +16,6 @@ let selectedTags = [];
 //[FUNCTIONS]
 const addPost = async () => {
   try {
-
     if (!validateForm()) {
       return;
     }
@@ -33,12 +32,6 @@ const addPost = async () => {
     utilities.setErrorMessage(errorFormContainer, errorHtml);
   }
 };
-
-// const deletePost = async (id) => {
-//     utilities.removeErrorMessage(errorModalContainer);
-//     await helpers.deletePost(id);
-//     loadPosts();
-// };
 
 const editPost = async () => {
   try {

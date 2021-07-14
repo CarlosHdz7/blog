@@ -11,7 +11,7 @@ const validateForm = () => {
     {
       field: 'textTitle',
       validate(value, field) {
-        return maxLength(value, field, 'Text is too long', 100);
+        return maxLength(value, field, 'Text is too long, max length: 100 characters', 100);
       },
     },
     {
@@ -23,7 +23,7 @@ const validateForm = () => {
     {
       field: 'textSubTitle',
       validate(value, field) {
-        return maxLength(value, field, 'Text is too long', 80);
+        return maxLength(value, field, 'Text is too long, max length: 80 characters', 80);
       },
     },
     {

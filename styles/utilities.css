@@ -158,11 +158,13 @@ thead th:last-child {
 }
 
 .modal-content {
+  border-radius: var(--radius);
   background-color: #fefefe;
   margin: 15% auto;
   padding: 20px;
   border: 1px solid #888;
   width: 80%;
+  overflow: hidden;
 }
 
 .close {
